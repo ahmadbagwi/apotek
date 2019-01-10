@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Penjualan extends CI_Controller {
 	public function construct(){
 		parent::__construct();
+		$this->load->model('PenjualanModel');
 		
 	}
 
@@ -14,18 +15,18 @@ Class Penjualan extends CI_Controller {
 	}
 
 	public function get_autocomplete(){
-		$this->load->model('PenjualanModel');
+		
         if (isset($_GET['term'])) {
-            $result = $this->PenjualanModel->search_blog($_GET['term']);
+            $result = $this->PenjualanModel->cariProduk($_GET['term']);
             if (count($result) > 0) {
             foreach ($result as $row)
-            	$arr_result[] = array(
+            	/*$arr_result[] = array(
             		'idProduk' => $row->id,
             		'nama' => $row->nama,
             		'hargaModal' => $row->modal,
             		'jual' => $row->jual,
-            	);
-                //$arr_result[] = $row->nama;
+            	);*/
+                $arr_result[] = $row->nama;
                 echo json_encode($arr_result);
             }
         }

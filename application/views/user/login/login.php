@@ -1,4 +1,15 @@
-
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+if ($_SESSION['user_id']==null) {
+    header('location:/apotek/');
+    } else {
+        if ($_SESSION['is_admin']==0) {
+            echo "anda user biasa 0"."<br>";
+            $idadmin = $_SESSION['user_id'];
+            echo $idadmin;
+        }
+        header('location:/apotek/home');
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>

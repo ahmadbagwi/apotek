@@ -22,7 +22,7 @@ Class PenjualanModel extends CI_Model {
     		echo json_encode ($array);
 		}
     }*/
-    public function search_blog($nama){
+    public function cariProduk($nama){
         $this->db->like('nama', $nama , 'both');
         //$this->db->like('id', $nama, 'both');
         $this->db->order_by('nama', 'ASC');

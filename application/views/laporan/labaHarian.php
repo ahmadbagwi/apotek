@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<title>Laba Bulanan | Apotek Budi Farma</title>
+	<title>Laba Harian | Apotek Budi Farma</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		</div>
 		<div class="row jumbotron">
 				<div class="col-md-12">
-					<fieldset><legend>Laba transaksi bulanan<br>
+					<fieldset><legend>Laba transaksi harian<br>
 						<label>Cari Transaksi  </label>
 						<?php echo form_open('Laporan/labaHarian', array('method'=>'get'));?>
 						<input type="text" name="tanggalCari" class="date datepicker">

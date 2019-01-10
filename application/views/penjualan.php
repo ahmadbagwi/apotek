@@ -11,7 +11,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Transaksi | Apotek Budi Farma</title>
@@ -153,15 +152,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             $( ".nama" ).autocomplete({
               source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
 
-              select: function (event, ui){
+              /*select: function (event, ui){
                 $(".idProduk").val(ui.item.idProduk);
                 $(".nama").val(ui.item.nama);
                 $(".hargaModal").val(ui.item.hargaModal);
                 $(".jual").val(ui.item.jual);
-
+                
                 //$("input[name='idProduk[]']")
               //.map(function(){return $(this).val(ui.item.barang);}).get();
-              }
+              }*/
             });
             });
         });

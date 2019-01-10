@@ -37,10 +37,13 @@ Class Laporan extends CI_Controller {
 		} else {
 			$tanggal = $this->input->get('tanggalCari');
 		}
-		$tanggal = substr($tanggal, 0,7);
-		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
+		$tanggal = substr($tanggal, 0,8);
+		//$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
 		//$data['totalLabaHarian'] = $this->LaporanModel->laba_harian($tanggal);
+		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
 		$this->load->view('laporan/labaBulanan', $data);
+		
+		
 
 	}
 

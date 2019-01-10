@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<title>Laba Harian | Apotek Budi Farma</title>
+	<title>Laba Bulanan | Apotek Budi Farma</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
@@ -33,13 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 				<div class="col-md-12">
 					<fieldset><legend>Laba transaksi bulanan<br>
 						<label>Cari Transaksi  </label>
-						<?php echo form_open('Laporan/labaHarian', array('method'=>'get'));?>
+						<?php echo form_open('Laporan/labaBulanan', array('method'=>'get'));?>
 						<input type="text" name="tanggalCari" class="date datepicker">
 						<input type="submit" name="cari" value="Cari">
 						<?php form_close();?>
 					</legend>
                         <?php
-						$this->table->set_heading('Tanggal', 'Modal', 'Jual', 'Profit');
+						$this->table->set_heading('Modal', 'Jual', 'Profit');
 						$template = array (
 									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
 									);
@@ -72,22 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     				dateFormat: "yy-mm-dd"
     			});
     		});
-    		$("#frm_submit").on('submit', function (e) {
-    			e.preventDefault();
-    			$.ajax({
-    				url: '<?php echo base_url() ?>Transaction/get_transaction',
-    				type: 'POST',
-    				data: $("#frm_submit").serialize()
-    			}).always(function(response){
-    				var r = (response.trim());
-    				if(r == 1){
-    					$(".alert-success").show();
-    				}
-    				else{
-    					$(".alert-danger").show();
-    				}
-    			});
-    		});
+    	
     	});
     </script>
 </body>
