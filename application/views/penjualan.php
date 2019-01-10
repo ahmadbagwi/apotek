@@ -96,7 +96,26 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     	</div><!--row alert-->
     </div><!--container-->    
     
-    
+    <script type="text/javascript">
+        $(document).on("focus", ".table", function(){
+            //$(document).on("change", ".jdr1", function(){
+            $( ".nama" ).autocomplete({
+              source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
+
+              /*select: function (event, ui){
+                $(".idProduk").val(ui.item.idProduk);
+                $(".nama").val(ui.item.nama);
+                $(".hargaModal").val(ui.item.hargaModal);
+                $(".jual").val(ui.item.jual);
+                
+                //$("input[name='idProduk[]']")
+              //.map(function(){return $(this).val(ui.item.barang);}).get();
+              }*/
+            //});
+            });
+        });
+    </script>
+
     <script>
     	$(document).ready(function (){
     		$("body").on('click', '.btn-add-more', function (e) {
@@ -146,25 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     	});
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(document).on("change", ".nama", function(){
-            $( ".nama" ).autocomplete({
-              source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
-
-              /*select: function (event, ui){
-                $(".idProduk").val(ui.item.idProduk);
-                $(".nama").val(ui.item.nama);
-                $(".hargaModal").val(ui.item.hargaModal);
-                $(".jual").val(ui.item.jual);
-                
-                //$("input[name='idProduk[]']")
-              //.map(function(){return $(this).val(ui.item.barang);}).get();
-              }*/
-            });
-            });
-        });
-    </script>
+    
 
     <script type="text/javascript">
         $(document).ready(function(){

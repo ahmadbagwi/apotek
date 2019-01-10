@@ -15,7 +15,7 @@ Class Penjualan extends CI_Controller {
 	}
 
 	public function get_autocomplete(){
-		
+		$this->load->model('PenjualanModel');
         if (isset($_GET['term'])) {
             $result = $this->PenjualanModel->cariProduk($_GET['term']);
             if (count($result) > 0) {
