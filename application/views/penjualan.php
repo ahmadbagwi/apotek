@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         if ($_SESSION['is_admin']==0) {
             echo "anda user biasa 0"."<br>";
             $idadmin = $_SESSION['user_id'];
-            echo $idadmin;
+            echo $idadmin."<br>";
         }
     }
 ?>
@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
-    <script src="<?php echo base_url('assets/js/'); ?>jquery-2.1.4.min.js"></script>
-    <script src="<?php echo base_url('assets/js/'); ?>jquery-ui.min.js"></script>
+    <script src="<?php echo base_url('assets/js/'); ?>jquery-3.3.1.js"></script>
+    <script src="<?php echo base_url('assets/js/'); ?>jquery-ui.js"></script>
     <script src="<?php echo base_url('assets/js/'); ?>simple.money.format.js"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/'); ?>bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets/js/'); ?>material.min.js"></script>
@@ -70,10 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <button class="btn btn-primary btn-sm btn-add-more">Tambah</button>
                         <button class="btn btn-sm btn-warning btn-remove-detail-row"><i class="glyphicon glyphicon-remove"></i></button>
                         <table style="width: 100%" class="hitungan table">
+                         <tr><td><input type="text"  required="" class="grandTotalModal form-control input-sm" placeholder="Grand Total modal" name="grandTotalModal" readonly></td></tr>
                          <tr><td><input type="text" required="" name="grand-total" class="grand-total form-control input-sm" placeholder="Grand Total" readonly></td></tr>
                          <tr><td><input type="text" class="bayar form-control input-sm" placeholder="Bayar" name="bayar"></td></tr>
                          <tr><td><input type="text"  required="" class="kembali form-control input-sm" placeholder="Kembali" name="kembali" readonly></td></tr>
-                         <tr><td><input type="text"  required="" class="grandTotalModal form-control input-sm" placeholder="Grand Total modal" name="grandTotalModal" readonly></td></tr>
                      </table>
                     </fieldset><!--fieldset-->
                     <div class="col-md-12">
@@ -98,24 +98,48 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     
     <script type="text/javascript">
         $(document).on("focus", ".table", function(){
-            //$(document).on("change", ".jdr1", function(){
-            $( ".nama" ).autocomplete({
-              source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
-
-              /*select: function (event, ui){
-                $(".idProduk").val(ui.item.idProduk);
-                $(".nama").val(ui.item.nama);
-                $(".hargaModal").val(ui.item.hargaModal);
-                $(".jual").val(ui.item.jual);
-                
-                //$("input[name='idProduk[]']")
-              //.map(function(){return $(this).val(ui.item.barang);}).get();
-              }*/
-            //});
-            });
+            $('[name="nama[]"]').each(function(i,e){
+                $(this).autocomplete({
+                  source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
+                  select: function (event, ui){
+                    $('[name="idProduk[]"]').val(ui.item.idProduk);
+                    $('[name="namaProduk[]"]').val(ui.item.namaProduk);
+                    $('[name="hargaModal[]"]').val(ui.item.modal);
+                    $('[name="jual[]"]').val(ui.item.jual);
+                  }
+                })
+            })
         });
     </script>
-
+    <!-- aslli autocomplete hanya nama
+    <script type="text/javascript">
+        $(document).on("focus", ".table", function(){
+            $('[id="nama[]"]').each(function(key,value){
+                $(this).autocomplete({
+                  source: "<?php //echo base_url('Penjualan/get_autocomplete/?');?>",
+                  /*select: function (event, ui){
+                    $('[name="idProduk[]"]').val(ui.item.idProduk);
+                    $('[name="nama[]"]').val(ui.item.nama);
+                    $('[name="hargaModal[]"]').val(ui.item.modal);
+                    $('[name="jual[]"]').val(ui.item.jual);
+                  }*/
+                })
+            })
+        });
+    </script>-->
+    <!--
+     <script type="text/javascript">
+        $(document).on("focusin",'[name="hargaModal[]"]', function(){
+            $.ajax({
+                url: '<?php// echo base_url() ?>Penjualan/ambil_harga',
+                type: 'GET',
+                data: $("#nama").serialize(),
+                success: function(res) {
+                }
+             });
+        });
+    </script>-->
+    <!--Menambah row baru-->  
     <script>
     	$(document).ready(function (){
     		$("body").on('click', '.btn-add-more', function (e) {
@@ -124,7 +148,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     			var rowid = Math.random();
     			var $html = '<tr class="jdr1" id="' + rowid + '">' +
     			'<td><span class="btn btn-sm btn-default">' + $sr + '</span><input type="hidden" name="count[]" value="'+Math.floor((Math.random() * 10000) + 1)+'"></td>' + 
-            
                 '<td><input type="text" name="idProduk[]" class="idProduk form-control input-sm"></td>'+
                 '<td><input type="text" id="nama" name="nama[]" autofocus="" class="nama form-control input-sm"></td>'+
                 '<td><input type="text" name="hargaModal[]" class="hargaModal form-control input-sm" ></td>'+
@@ -146,30 +169,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     				dateFormat: "yy-mm-dd"
     			});
     		});
-    		$("#frm_submit").on('submit', function (e) {
-    			e.preventDefault();
-    			$.ajax({
-    				url: '<?php echo base_url() ?>Transaction/get_transaction',
-    				type: 'POST',
-    				data: $("#frm_submit").serialize()
-    			}).always(function(response){
-    				var r = (response.trim());
-    				if(r == 1){
-    					$(".alert-success").show();
-    				}
-    				else{
-    					$(".alert-danger").show();
-    				}
-    			});
-    		});
     	});
     </script>
-
-    
-
+    <!--Mencari total modal dan total belanja-->
     <script type="text/javascript">
         $(document).ready(function(){
-          $(document).on("change", ".jdr1", function(){
+          $(document).on("focus", ".table", function(){
           $(".jumlah").blur(function(){
             var hargaModalObj = $(this).parent().parent().find(".hargaModal");
             var priceObj = $(this).parent().parent().find(".jual");
@@ -198,10 +203,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           });
         });
     </script>
-
+    <!--Mencari uang kembali-->
     <script type="text/javascript">
         $(document).ready(function(){
-          $(document).on("change", ".hitungan", function(){
+           $(document).on("focus", ".table", function(){
             var grandTotalObj = $(this).parent().parent().find(".grand-total");
             var bayarObj = $(this).parent().parent().find(".bayar");
             if (grandTotalObj.val() !== "")

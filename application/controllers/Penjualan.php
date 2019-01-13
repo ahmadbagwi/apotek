@@ -20,13 +20,31 @@ Class Penjualan extends CI_Controller {
             $result = $this->PenjualanModel->cariProduk($_GET['term']);
             if (count($result) > 0) {
             foreach ($result as $row)
-            	/*$arr_result[] = array(
+            	$arr_result[] = array(
             		'idProduk' => $row->id,
-            		'nama' => $row->nama,
-            		'hargaModal' => $row->modal,
+            		'namaProduk' => $row->nama,
+            		'modal' => $row->modal,
             		'jual' => $row->jual,
-            	);*/
-                $arr_result[] = $row->nama;
+            	);
+                //$arr_result[] = $row->nama;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+
+    public function ambil_harga(){
+		$this->load->model('PenjualanModel');
+        if (isset($_GET['term'])) {
+            $result = $this->PenjualanModel->cariHarga($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+            	$arr_result[] = array(
+            		'idProduk' => $row->id,
+            		//'nama' => $row->nama,
+            		'modal' => $row->modal,
+            		'jual' => $row->jual,
+            	);
+                //$arr_result[] = $row->nama;
                 echo json_encode($arr_result);
             }
         }
