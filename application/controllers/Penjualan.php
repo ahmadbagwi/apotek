@@ -14,7 +14,7 @@ Class Penjualan extends CI_Controller {
 		$this->load->view('penjualan');
 	}
 
-	public function get_autocomplete(){
+	/*function get_autocomplete(){
 		$this->load->model('PenjualanModel');
         if (isset($_GET['term'])) {
             $result = $this->PenjualanModel->cariProduk($_GET['term']);
@@ -30,7 +30,27 @@ Class Penjualan extends CI_Controller {
                 echo json_encode($arr_result);
             }
         }
-    }
+    }*/
+
+    function get_autocomplete(){
+		if (isset($_GET['term'])) {
+			$this->load->model('PenjualanModel');
+		  	$query = $this->PenjualanModel->cariProduk($_GET['term']);
+		   	if (count($query) > 0) {
+		    foreach ($query as $row)
+		     	$result[] = array(
+					//'label'			=> $row->nama,
+					//'description'	=> $row->jual,
+					'name' => $row->nama,
+					'idProduk' => $row->id,
+            		'modal' => $row->modal,
+            		'jual' => $row->jual,
+				);
+		     	$json = json_encode($result);
+		   		echo $json;
+		   	}
+		}
+	}
 
     public function ambil_harga(){
 		$this->load->model('PenjualanModel');
@@ -111,7 +131,7 @@ Class Penjualan extends CI_Controller {
 		$prosesBayar = $this->PenjualanModel->simpanPembayaran($pembayaran);
 
 		if($prosesJual != null && $prosesBayar !=null){
-			$this->load->view('notapenjualan', $data);
+			$this->load->view('notapenjualan', $kode);
 		}
 		else{
 			$this->load->view('dashboard');

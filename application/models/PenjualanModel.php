@@ -22,10 +22,17 @@ Class PenjualanModel extends CI_Model {
     		echo json_encode ($array);
 		}
     }*/
-    function cariProduk($nama){
+    /*function cariProduk($nama){
         //$this->db->select('nama', 'modal', 'jual');
         $this->db->like('nama', $nama , 'both');
         //$this->db->like('id', $nama, 'both');
+        $this->db->order_by('nama', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('stok')->result();
+    }*/
+
+    function cariProduk($nama){
+        $this->db->like('nama', $nama , 'both');
         $this->db->order_by('nama', 'ASC');
         $this->db->limit(10);
         return $this->db->get('stok')->result();

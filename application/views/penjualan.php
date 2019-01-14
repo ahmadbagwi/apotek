@@ -95,12 +95,41 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     		</div>
     	</div><!--row alert-->
     </div><!--container-->    
-    
+    <!--script baru projects.co.id-->
+    <script type="text/javascript">
+    $(document).on("focus", ".table", function(){    
+    $('[name="nama[]"]').each(function(i,e){
+       
+        $(this).autocomplete({
+            source: function (request, response) {
+                //Gunakan Custom Request saja
+                $.get("<?php echo base_url('Penjualan/get_autocomplete/?');?>", request,function(data){
+                    jsonData = JSON.parse(data); //Parse data ke Json
+                    response($.map(jsonData, function (value, key) {
+                        return {
+                            label: value.name, // label adalah data yg ingin ditampilkan
+                            data: value, //PENTING, buat object yang berisi data jsonnya tadi
+                        }
+                    }));
+                });
+            },
+            select: function (event, ui){
+                tr = $(this).parents('tr'); //Pastikan yg diubah berada dalam 1 parent tr/row
+                tr.find('[name="nama[]"]').val(ui.item.data.name); //gunakan object data yg kita buat tadi
+                tr.find('[name="idProduk[]"]').val(ui.item.data.idProduk);
+                tr.find('[name="hargaModal[]"]').val(ui.item.data.modal);
+                tr.find('[name="jual[]"]').val(ui.item.data.jual);
+            }
+        })
+    })
+    })
+    </script>
+    <!--
     <script type="text/javascript">
         $(document).on("focus", ".table", function(){
             $('[name="nama[]"]').each(function(i,e){
                 $(this).autocomplete({
-                  source: "<?php echo base_url('Penjualan/get_autocomplete/?');?>",
+                  source: "<?php// echo base_url('Penjualan/get_autocomplete/?');?>",
                   select: function (event, ui){
                     $('[name="idProduk[]"]').val(ui.item.idProduk);
                     $('[name="namaProduk[]"]').val(ui.item.namaProduk);
@@ -110,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 })
             })
         });
-    </script>
+    </script>-->
     <!-- aslli autocomplete hanya nama
     <script type="text/javascript">
         $(document).on("focus", ".table", function(){
