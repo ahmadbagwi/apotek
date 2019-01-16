@@ -4,9 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     header('location:/apotek/');
     } else {
         if ($_SESSION['is_admin']==0) {
-            echo "anda user biasa 0"."<br>";
             $idadmin = $_SESSION['user_id'];
-            echo $idadmin;
         }
     }
 ?>
@@ -39,26 +37,34 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 						<?php form_close();?>
 					</legend>
                         <?php
-						$this->table->set_heading('Kode Transaksi', 'Tanggal', 'Modal', 'Jual', 'Profit');
-						$template = array (
-									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
-									);
-						$this->table->set_template($template);
-						//$this->table->add_row($totalLabaHarian);
-						echo $this->table->generate($query);
-
-						
-						/*$this->table->clear();
-
-						$this->table->set_heading('Total Modal', 'Total Jual', 'Total Profit');
-						$template = array (
-									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
-									);
-						$this->table->set_template($template);
-						echo $this->table->generate($totalLabaHarian);
-						*/
+                        foreach ($labaHarian->result_array() as $laba) { 
+                            }
 						?>
-					   
+					    <ul>
+                            <li>Tanggal <strong><?php $tgl = $laba['tanggal']; echo substr($tgl, 0, 11);?></strong></li>
+                        </ul>
+                       <table class="table table-striped" style="font-size: 12px">
+                                 <tr>
+                                     <th>Kode</th>
+                                     <th>Transaksi Modal</td>
+                                     <th>Transaksi Jual</th>
+                                     <th>Profit</th>
+                                 </tr>
+                                 <?php foreach ($labaHarian->result_array() as $keuntungan) { ?>
+                                 <tr>
+                                     <td><?php echo $keuntungan['kode'];?></td>
+                                     <td><?php echo $keuntungan['jumlahModal'];?></td>
+                                     <td><?php echo $keuntungan['jumlahJual'];?></td>
+                                     <td><?php echo $keuntungan['profit'];?></td>
+                                 </tr>
+                                <?php } foreach ($totalLabaHarian->result_array() as $totalLaba) { }?>
+                                 <tr>
+                                     <td></td>
+                                     <td></td>
+                                     <td><strong>Total Profit</strong></td>
+                                     <td><strong><?php echo $totalLaba['profit'];?></strong></td>
+                                 </tr>
+                             </table>                 
                     </fieldset><!--fieldset-->      
                 </div><!--div-col-12-->
             <!--</form>form-->

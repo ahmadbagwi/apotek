@@ -14,7 +14,7 @@ Class Laporan extends CI_Controller {
 		} else {
 			$tanggal = $this->input->get('tanggalCari');
 		}
-		$data['query'] = $this->LaporanModel->detail_harian($tanggal);
+		$data['detailHarian'] = $this->LaporanModel->detailHarian($tanggal);
 		$this->load->view('laporan/detailHarian', $data);	
 	}
 
@@ -25,8 +25,8 @@ Class Laporan extends CI_Controller {
 			$tanggal = $this->input->get('tanggalCari');
 		}
 		
-		$data['query'] = $this->LaporanModel->laba_harian($tanggal);
-		//$data['totalLabaHarian'] = $this->LaporanModel->laba_harian($tanggal);
+		$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
+		$data['totalLabaHarian'] = $this->LaporanModel->totalLabaHarian($tanggal);
 		$this->load->view('laporan/labaHarian', $data);
 
 	}
@@ -38,22 +38,11 @@ Class Laporan extends CI_Controller {
 			$tanggal = $this->input->get('tanggalCari');
 		}
 		$tanggal = substr($tanggal, 0,8);
-		//$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
-		//$data['totalLabaHarian'] = $this->LaporanModel->laba_harian($tanggal);
 		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
 		$this->load->view('laporan/labaBulanan', $data);
 		
 		
 
 	}
-
-	/*function cariLabaHarian() {
-		$tanggal = $this->input->get('tanggalCari');
-		$data['query'] = $this->LaporanModel->laba_harian($tanggal);
-		//$data['totalLabaHarian'] = $this->LaporanModel->laba_harian($tanggal);
-		$this->load->view('laporan/labaHarian', $data);
-
-	}*/
-
 }
 

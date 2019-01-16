@@ -1,12 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php if ($_SESSION['user_id']==null) {
+defined('BASEPATH') OR exit('No direct script access allowed');
+if ($_SESSION['user_id']==null) {
     header('location:/apotek/');
     } else {
         if ($_SESSION['is_admin']==0) {
-            echo "anda user biasa 0"."<br>";
             $idadmin = $_SESSION['user_id'];
-            echo $idadmin;
         }
     }
 ?>
@@ -28,12 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 				<div class="col-md-12">
 					<fieldset><legend>Apotek Budi Farma | Nota Transaksi | Jl. Tajur No. xx | 0813xxxxxxxx</legend>
 					<?php
-                        /*$this->table->set_heading('Kode Transaksi', 'Tanggal', 'Produk', 'Harga', 'Jumlah', 'Total');
-                        $template = array (
-                                   'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
-                                   );
-                        $this->table->set_template($template);
-                        echo $this->table->generate($penjualan);*/ foreach ($pembayaran->result_array() as $pembayaran) { }
+                        foreach ($pembayaran->result_array() as $pembayaran) { }
                     ?>
                             <ul>
                                 <li>Kasir <strong><?php echo $_SESSION['username'];?></strong></li>

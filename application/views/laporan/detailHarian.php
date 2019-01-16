@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
 									);
 						$this->table->set_template($template);
-						echo $this->table->generate($query);
+						echo $this->table->generate($detailHarian);
 
 						?>
 					   
