@@ -142,9 +142,9 @@ class User extends CI_Controller {
 				$_SESSION['is_admin']     = (bool)$user->is_admin;
 				
 				// user login ok
-				$this->load->view('header');
-				$this->load->view('user/login/login_success', $data);
-				$this->load->view('footer');
+				$this->load->view('beranda'	, $data);
+				//$this->load->view('user/login/login_success', $data);
+				//$this->load->view('footer');
 				
 			} else {
 				

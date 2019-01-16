@@ -45,24 +45,24 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 							<thead>
 								<tr>
 									<th>No</th>
-                                    <th>Id</th>
+                                    <th style="display: none" >Id</th>
                                     <th>Nama Produk</th>
-                                    <th>Modal</th>
-                                    <th>Jual</th>
-                                    <th>Jumlah</th>
-                                    <th>Total Modal</th>
-                                    <th>Total</th>
+                                    <th style="display: none">Modal</th>
+                                    <th>Harga</th>
+                                    <th>Banyaknya</th>
+                                    <th style="display: none">Total Modal</th>
+                                    <th>Sub total</th>
 								</tr>
 							</thead>
 							<tbody id="table-details">
                                 <tr id="row1" class="jdr1">
                                     <td><span class="btn btn-sm btn-default">1</span><input type="hidden" value="6437" name="count[]"></td>
-                                    <td><input type="text" id="idProduk" name="idProduk[]"  class="idProduk form-control input-sm"></td>
+                                    <td style="display: none" ><input type="text" id="idProduk" name="idProduk[]"  class="idProduk form-control input-sm"></td>
                                     <td><input type="text" id="nama" name="nama[]" autofocus=""  class="nama form-control input-sm"></td>
-                                    <td><input type="text" name="hargaModal[]" class="hargaModal form-control input-sm" ></td>
-                                    <td><input type="text" name="jual[]" class="jual form-control input-sm" ></td>
+                                    <td  style="display: none" ><input type="text" name="hargaModal[]" class="hargaModal form-control input-sm" ></td>
+                                    <td><input type="text" readonly="" name="jual[]" class="jual form-control input-sm" ></td>
                                     <td><input type="text" name="jumlah[]" class="jumlah form-control input-sm"></td>
-                                    <td><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>
+                                    <td style="display: none"><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>
                                     <td><input type="text" name="total[]" class="total form-control input-sm" readonly></td>
                                 </tr>
                             </tbody>
@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <button class="btn btn-primary btn-sm btn-add-more">Tambah</button>
                         <button class="btn btn-sm btn-warning btn-remove-detail-row"><i class="glyphicon glyphicon-remove"></i></button>
                         <table style="width: 100%" class="hitungan table">
-                         <tr><td><input type="text"  required="" class="grandTotalModal form-control input-sm" placeholder="Grand Total modal" name="grandTotalModal" readonly></td></tr>
+                         <tr><td><input type="hidden"  required="" class="grandTotalModal form-control input-sm" placeholder="Grand Total modal" name="grandTotalModal" readonly></td></tr>
                          <tr><td><input type="text" required="" name="grand-total" class="grand-total form-control input-sm" placeholder="Grand Total" readonly></td></tr>
                          <tr><td><input type="text" class="bayar form-control input-sm" placeholder="Bayar" name="bayar"></td></tr>
                          <tr><td><input type="text"  required="" class="kembali form-control input-sm" placeholder="Kembali" name="kembali" readonly></td></tr>
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </fieldset><!--fieldset-->
                     <div class="col-md-12">
                         <hr>
-                        <input class="btn btn-success pull-left" type="submit" value="PROSES" name="submit">
+                        <input class="btn btn-success pull-left" type="submit" value="PROSES" name="submit" onclick="return confirm('Proses transaksi?')">
                     </div>
                 </div><!--div-col-12-->
             <?php echo form_close();?>
@@ -124,51 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     })
     })
     </script>
-    <!--
-    <script type="text/javascript">
-        $(document).on("focus", ".table", function(){
-            $('[name="nama[]"]').each(function(i,e){
-                $(this).autocomplete({
-                  source: "<?php// echo base_url('Penjualan/get_autocomplete/?');?>",
-                  select: function (event, ui){
-                    $('[name="idProduk[]"]').val(ui.item.idProduk);
-                    $('[name="namaProduk[]"]').val(ui.item.namaProduk);
-                    $('[name="hargaModal[]"]').val(ui.item.modal);
-                    $('[name="jual[]"]').val(ui.item.jual);
-                  }
-                })
-            })
-        });
-    </script>-->
-    <!-- aslli autocomplete hanya nama
-    <script type="text/javascript">
-        $(document).on("focus", ".table", function(){
-            $('[id="nama[]"]').each(function(key,value){
-                $(this).autocomplete({
-                  source: "<?php //echo base_url('Penjualan/get_autocomplete/?');?>",
-                  /*select: function (event, ui){
-                    $('[name="idProduk[]"]').val(ui.item.idProduk);
-                    $('[name="nama[]"]').val(ui.item.nama);
-                    $('[name="hargaModal[]"]').val(ui.item.modal);
-                    $('[name="jual[]"]').val(ui.item.jual);
-                  }*/
-                })
-            })
-        });
-    </script>-->
-    <!--
-     <script type="text/javascript">
-        $(document).on("focusin",'[name="hargaModal[]"]', function(){
-            $.ajax({
-                url: '<?php// echo base_url() ?>Penjualan/ambil_harga',
-                type: 'GET',
-                data: $("#nama").serialize(),
-                success: function(res) {
-                }
-             });
-        });
-    </script>-->
-    <!--Menambah row baru-->  
+    
     <script>
     	$(document).ready(function (){
     		$("body").on('click', '.btn-add-more', function (e) {
@@ -177,12 +133,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     			var rowid = Math.random();
     			var $html = '<tr class="jdr1" id="' + rowid + '">' +
     			'<td><span class="btn btn-sm btn-default">' + $sr + '</span><input type="hidden" name="count[]" value="'+Math.floor((Math.random() * 10000) + 1)+'"></td>' + 
-                '<td><input type="text" name="idProduk[]" class="idProduk form-control input-sm"></td>'+
+                '<td style="display: none"><input type="text" name="idProduk[]" class="idProduk form-control input-sm"></td>'+
                 '<td><input type="text" id="nama" name="nama[]" autofocus="" class="nama form-control input-sm"></td>'+
-                '<td><input type="text" name="hargaModal[]" class="hargaModal form-control input-sm" ></td>'+
-                '<td><input type="text" name="jual[]" class="jual form-control input-sm" ></td>'+
+                '<td style="display: none"><input type="text" name="hargaModal[]" class="hargaModal form-control input-sm" ></td>'+
+                '<td><input type="text" readonly name="jual[]" class="jual form-control input-sm" ></td>'+
                 '<td><input type="text" name="jumlah[]" class="jumlah form-control input-sm"></td>'+
-                '<td><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>'+
+                '<td style="display: none"><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>'+
                 '<td><input type="text" name="total[]" class="total form-control input-sm" readonly></td>'+
     			'</tr>';
     			$("#table-details").append($html);
