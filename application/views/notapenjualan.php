@@ -22,13 +22,14 @@ if ($_SESSION['user_id']==null) {
 </head>
 <body>
 	<div class="container">
+        <div class="col-md-4 col-md-offset-4">
 		<div class="row jumbotron" style="font-size: 12px">
 				<div class="col-md-12">
-					<fieldset><legend>Apotek Budi Farma | Nota Transaksi | Jl. Tajur No. xx | 0813xxxxxxxx</legend>
+					<h5 style="text-align: center">Apotek Budi Farma<br>Jl. Raya Tajur No. 287A<br>0813xxxxxxxx</h5>
 					<?php
                         foreach ($pembayaran->result_array() as $pembayaran) { }
                     ?>
-                            <ul>
+                            <ul style="list-style: none;">
                                 <li>Kasir <strong><?php echo $_SESSION['username'];?></strong></li>
                                 <li>Tanggal <strong><?php echo $pembayaran['tanggal'];?></strong></li>
                                 <li>Kode Transaksi <strong><?php echo $pembayaran['kode']; ?></strong></li>
@@ -69,11 +70,11 @@ if ($_SESSION['user_id']==null) {
                                      <td><strong>Kembali</strong></td>
                                      <td><strong><?php echo $pembayaran['kembali'];?></strong></td>
                                  </tr>
-                             </table>                              
-                    </fieldset><!--fieldset-->      
+                             </table>                                
                 </div><!--div-col-12-->
             <!--</form>form-->
 	    </div><!--row jumbotron-->
+    </div>
     </div><!--container-->    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
     </script>

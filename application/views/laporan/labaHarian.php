@@ -23,13 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2>Apotek Budi Farma<small> | Jl Raya Tajur</small></h2>
-			<p><a class="btn btn-primary btn-lg" href="#"><?php echo "Ahmad Bagwi | Shift 1"; ?> </a> 081288888888</p>
-		</div>
+        <div class="col-md-10 col-md-offset-1">
 		<div class="row jumbotron">
 				<div class="col-md-12">
-					<fieldset><legend>Laba transaksi harian<br>
+					<legend>Laba transaksi harian<br>
 						<label>Cari Transaksi  </label>
 						<?php echo form_open('Laporan/labaHarian', array('method'=>'get'));?>
 						<input type="text" name="tanggalCari" class="date datepicker">
@@ -40,9 +37,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         foreach ($labaHarian->result_array() as $laba) { 
                             }
 						?>
-					    <ul>
-                            <li>Tanggal <strong><?php $tgl = $laba['tanggal']; echo substr($tgl, 0, 11);?></strong></li>
-                        </ul>
+					   <p>Tanggal <strong><?php $tgl = $laba['tanggal']; echo substr($tgl, 0, 11);?></strong>
+                        
                        <table class="table table-striped" style="font-size: 12px">
                                  <tr>
                                      <th>Kode</th>
@@ -64,11 +60,19 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                      <td><strong>Total Profit</strong></td>
                                      <td><strong><?php echo $totalLaba['profit'];?></strong></td>
                                  </tr>
-                             </table>                 
-                    </fieldset><!--fieldset-->      
+                             </table>                   
                 </div><!--div-col-12-->
-            <!--</form>form-->
+                <div class="footer">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>&copy; Apotek Budi Farma 2019</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 	    </div><!--row jumbotron-->
+        </div>
     </div><!--container-->    
         <script>
     	$(document).ready(function (){

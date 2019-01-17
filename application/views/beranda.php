@@ -24,62 +24,70 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </head>
 <body>
 	<div class="container">
-    <div class="col-md-8 col-md-offset-2">
-		<div class="jumbotron">
-			<h2>Apotek Budi Farma<small> | Jl Raya Tajur</small></h2>
-			<p><a class="btn btn-primary btn-lg" href="#"><?php echo "Ahmad Bagwi | Shift 1"; ?> </a> 081288888888</p>
+    <div class="col-md-10 col-md-offset-1">
+		<div class="row jumbotron" style="text-align: center;">
+			<h2>Sistem Penjualan Apotek Budi Farma</h2>
+            <p>Jl. Raya Tajur No. 287A</p>
 		</div>
 		<div class="row jumbotron">
 				<div class="col-md-12">
-					<legend>Halaman Beranda Admin Apotek Budi Farma | <?php echo date('Y-m-d | h:i:j'); ?></legend>
+                    <div class="header" style="text-align: center;">
+					<i class="fas fa-lock"></i> Halaman Beranda Admin 
+                    <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?> 
+                    <i class="fas fa-calendar-alt"> </i> <?php echo date('Y-m-d'); ?>
+                    </div>
 					<table style="width: 100%; text-align: center;" class="table">
                         <thead class="thead-light">
                             <tr>
                                 <td></td>
-                                <td><strong>Transaksi</strong></td>
+                                <td><h4><strong>Transaksi</strong></h4></td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><a href="<?php echo site_url('penjualan') ?>"><i class="fas fa-cart-plus fa-3x"></i></a><br>Penjualan</td>
-                                <td><i class="fas fa-list fa-3x"></i><br>Transaksi Terakhir</td>
-                                <td><i class="fas fa-list-ol fa-3x"></i><br>Detail Harian</td>
+                                <td><a href="<?php echo site_url('penjualan') ?>" target="_blank"><i class="fas fa-cart-plus fa-3x"></i></a><br>Penjualan</td>
+                                <td><a href="<?php echo site_url('nota') ?>" target="_blank"><i class="fas fa-list fa-3x"></i></a><br>Transaksi Terakhir</td>
+                                <td><a href="<?php echo site_url('laporan/detailHarian') ?>" target="_blank"><i class="fas fa-list-ol fa-3x"></i></a><br>Detail Harian</td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <table style="width: 100%; text-align: center;" class="table">
                         <thead class="thead-light">
                             <tr>
                                 <td></td>
-                                <td><strong>Produk</strong></td>
+                                <td><h4><strong>Produk</strong></h4></td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><i class="fas fa-clipboard-list fa-3x"></i><br>Daftar Produk</td>
-                                <td><i class="fas fa-plus fa-3x"></i><br>Tambah</td>
-                                <td><i class="fas fa-download fa-3x"></i><br>Barang Masuk</td>
+                                <td><a href="<?php echo site_url('stok') ?>" target="_blank"><i class="fas fa-clipboard-list fa-3x"></i></a><br>Daftar Produk</td>
+                                <td><a href="<?php echo site_url('stok/create') ?>" target="_blank"><i class="fas fa-plus fa-3x"></i></a><br>Tambah</td>
+                                <td onclick="return alert('belum tersedia')"><a href="#"><i class="fas fa-download fa-3x"></i></a><br>Barang Masuk</td>
                             </tr>
                         </tbody>
-                    </table>
-                    <table style="width: 100%; text-align: center;" class="table">
                         <thead class="thead-light">
                             <tr>
                                 <td></td>
-                                <td><strong>Laporan</strong></td>
+                                <td><h4><strong>Laporan</strong></h4></td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><i class="fas fa-th-list fa-3x"></i><br>Laporan Bulanan</td>
-                                <td><i class="fas fa-list-ul fa-3x"></i><br>Laporan Harian</td>
-                                <td><i class="fas fa-list-ol fa-3x"></i><br>Detail Harian</td>
+                                <td><a href="<?php echo site_url('laporan/labaBulanan') ?>" target="_blank"><i class="fas fa-th-list fa-3x"></i></a><br>Laporan Bulanan</td>
+                                <td><a href="<?php echo site_url('laporan/labaHarian') ?>" target="_blank"><i class="fas fa-list-ul fa-3x"></i><br>Laporan Harian</td>
+                                <td onclick="return alert('belum tersedia')"><a href="#"><i class="fas fa-list-ol fa-3x"></i></a><br>Daftar Barang Masuk</td>
                             </tr>
                         </tbody>
                     </table>
+                        <div class="footer">
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>&copy; Apotek Budi Farma 2019</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                 </div><!--div-col-12-->
             <!--</form>form-->
 	    </div><!--row jumbotron-->

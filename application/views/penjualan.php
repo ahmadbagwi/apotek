@@ -4,16 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     header('location:/apotek/');
     } else {
         if ($_SESSION['is_admin']==0) {
-            echo "anda user biasa 0"."<br>";
             $idadmin = $_SESSION['user_id'];
-            echo $idadmin."<br>";
         }
     }
 ?>
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<title>Transaksi | Apotek Budi Farma</title>
+	<title>Transaksi Penjualan | Apotek Budi Farma</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
@@ -25,22 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2>Apotek Budi Farma<small> | Jl Raya Tajur</small></h2>
-			<p><a class="btn btn-primary btn-lg" href="#"><?php echo "Ahmad Bagwi | Shift 1"; ?> </a> 081288888888</p>
-		</div>
-		<div class="row jumbotron">
+        <div class="col-md-10 col-md-offset-1">
+		    <div class="row jumbotron">
                 <?php echo form_open('Penjualan/prosesTransaksi'); ?>
 				<div class="col-md-12">
-					<fieldset><legend>Transaksi Detail | <?php echo date('Y-m-d | h:i:j'); ?></legend>
-					   <?php
-                            
-                            $tanggal = date('Y-m-d H:i:s');
-                       ?>
-                       <input type="text" name="jenis"  class="type form-control input-sm" placeholder="Jenis transaksi" value="umum">
-                       <input type="text" name="pelanggan" class="customer form-control input-sm" placeholder="Pelanggan" value="umum">
-                       <input type="text" name="tanggal"  class="form-control input-sm"  value="<?php echo $tanggal; ?>">
-                       <input type="text" name="idUser"  class="user form-control input-sm"  value="<?php echo $idadmin;?>">
+					<fieldset><legend>Transaksi Penjualan | <?php echo date('Y-m-d'); ?></legend>
+                       <label>Jenis</label><input type="text" name="jenis"  class="type form-control input-sm" placeholder="Jenis transaksi" value="umum">
+                       <label>Pelanggan</label><input type="text" name="pelanggan" class="customer form-control input-sm" placeholder="Pelanggan" value="umum">
 					   <table style="width: 100%" class="table">
 							<thead>
 								<tr>
@@ -81,9 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <input class="btn btn-success pull-left" type="submit" value="PROSES" name="submit" onclick="return confirm('Proses transaksi?')">
                     </div>
                 </div><!--div-col-12-->
-            <?php echo form_close();?>
+                <?php echo form_close();?>
             <!--</form>form-->
-	    </div><!--row jumbotron-->
+	        </div><!--row jumbotron-->
+        </div>
     	<div class="row">
     		<div class="alert alert-dismissable alert-success" style="display: none">
     			<button type="button" class="close" data-dismiss="alert">×</button>

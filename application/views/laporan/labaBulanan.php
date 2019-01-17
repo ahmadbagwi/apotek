@@ -4,9 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     header('location:/apotek/');
     } else {
         if ($_SESSION['is_admin']==0) {
-            echo "anda user biasa 0"."<br>";
             $idadmin = $_SESSION['user_id'];
-            echo $idadmin;
         }
     }
 ?>
@@ -25,20 +23,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2>Apotek Budi Farma<small> | Jl Raya Tajur</small></h2>
-			<p><a class="btn btn-primary btn-lg" href="#"><?php echo "Ahmad Bagwi | Shift 1"; ?> </a> 081288888888</p>
-		</div>
+		<div class="col-md-10 col-md-offset-1">
 		<div class="row jumbotron">
 				<div class="col-md-12">
-					<fieldset><legend>Laba transaksi bulanan<br>
-						<label>Cari Transaksi  </label>
+						<h3>Laba transaksi bulanan</h3><br>	
 						<?php echo form_open('Laporan/labaBulanan', array('method'=>'get'));?>
 						<input type="text" name="tanggalCari" class="date datepicker">
 						<input type="submit" name="cari" value="Cari">
-						<?php form_close();?>
-					</legend>
+						<?php form_close(); ?>						
                         <?php
+                        echo "<p>Bulan "."<strong>".$tanggal."<strong>";
 						$this->table->set_heading('Modal', 'Jual', 'Profit');
 						$template = array (
 									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
@@ -46,23 +40,22 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 						$this->table->set_template($template);
 						//$this->table->add_row($totalLabaHarian);
 						echo $this->table->generate($query);
-
-						
-						/*$this->table->clear();
-
-						$this->table->set_heading('Total Modal', 'Total Jual', 'Total Profit');
-						$template = array (
-									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
-									);
-						$this->table->set_template($template);
-						echo $this->table->generate($totalLabaHarian);
-						*/
 						?>
 					   
                     </fieldset><!--fieldset-->      
                 </div><!--div-col-12-->
             <!--</form>form-->
+            <div class="footer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>&copy; Apotek Budi Farma 2019</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 	    </div><!--row jumbotron-->
+		</div>
     </div><!--container-->    
         <script>
     	$(document).ready(function (){
