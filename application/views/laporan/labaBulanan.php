@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <head>
 	<meta charset="utf-8">
 	<title>Laba Bulanan | Apotek Budi Farma</title>
-	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
     <script src="<?php echo base_url('assets/js/'); ?>jquery-2.1.4.min.js"></script>
@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </fieldset><!--fieldset-->      
                 </div><!--div-col-12-->
             <!--</form>form-->
+            <a href="<?php echo site_url('beranda') ?>" class="btn btn-success"><b><</b> Beranda</a>
             <div class="footer">
                 <div class="col-md-12">
                     <table class="table table-striped">

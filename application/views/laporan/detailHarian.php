@@ -38,9 +38,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 									);
 						$this->table->set_template($template);
 						echo $this->table->generate($detailHarian);
-
-						?>   
+                        ?>
+                        <?php
+                        foreach ($detailHarian->result_array() as $detail) { 
+                            }
+                        ?>
+                      
             </div>
+            <a href="<?php echo site_url('beranda') ?>" class="btn btn-success"><b><</b> Beranda</a>
             <div class="footer">
                 <div class="col-md-12">
                     <table class="table table-striped">
@@ -81,6 +86,3 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </script>
 </body>
 </html>
-
-
-

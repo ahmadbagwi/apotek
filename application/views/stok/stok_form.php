@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <head>
         <title>Buat/Edit Produk | Apotek Budi Farma</title>
         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
-        <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
         <script src="<?php echo base_url('assets/js/'); ?>jquery-3.3.1.js"></script>

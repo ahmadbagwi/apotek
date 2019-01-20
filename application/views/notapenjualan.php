@@ -13,7 +13,7 @@ if ($_SESSION['user_id']==null) {
 <head>
 	<meta charset="utf-8">
 	<title>Nota Penjualan | Apotek Budi Farma</title>
-	<link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bower_components/bootstrap/dist/css/'); ?>bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>bootstrap.min.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -74,7 +74,12 @@ if ($_SESSION['user_id']==null) {
                 </div><!--div-col-12-->
             <!--</form>form-->
 	    </div><!--row jumbotron-->
+        <div id="footer" class="row jumbotron tombolNavigasi">
+            <a href="<?php echo site_url('penjualan') ?>" class="btn btn-success">Transaksi lagi</a>
+            <button class="btn btn-warning" onclick="window.print();return false;">Cetak Nota</button>
+        </div>
     </div>
+
     </div><!--container-->    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
     </script>

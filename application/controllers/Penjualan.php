@@ -12,7 +12,7 @@ Class Penjualan extends CI_Controller {
 		$this->load->view('penjualan');
 	}
 
-    function get_autocomplete(){
+    public function get_autocomplete(){
 		if (isset($_GET['term'])) {
 			$this->load->model('PenjualanModel');
 		  	$query = $this->PenjualanModel->cariProduk($_GET['term']);
@@ -23,6 +23,7 @@ Class Penjualan extends CI_Controller {
 					'idProduk' => $row->id,
             		'modal' => $row->modal,
             		'jual' => $row->jual,
+            		'stokProduk' => $row->stok,
 				);
 		     	$json = json_encode($result);
 		   		echo $json;
@@ -30,29 +31,7 @@ Class Penjualan extends CI_Controller {
 		}
 	}
 
-    /*public function ambil_harga(){
-		$this->load->model('PenjualanModel');
-        if (isset($_GET['term'])) {
-            $result = $this->PenjualanModel->cariHarga($_GET['term']);
-            if (count($result) > 0) {
-            foreach ($result as $row)
-            	$arr_result[] = array(
-            		'idProduk' => $row->id,
-            		'modal' => $row->modal,
-            		'jual' => $row->jual,
-            	);
-                echo json_encode($arr_result);
-            }
-        }
-    }*/
-
-	public function cariProduk(){
-        $keyword=$this->input->post('idProduk');
-        $cariData=$this->PenjualanModel->GetRow($keyword);        
-        echo json_encode($cariData);
-    }
-
-	public function prosesTransaksi() {
+	function prosesTransaksi() {
 		$awal = 'trx_';
         $akhir = date('YmdHis');
         
@@ -72,8 +51,9 @@ Class Penjualan extends CI_Controller {
 		$bayar = $this->input->post('bayar');
 		$kembali = $this->input->post('kembali');
 		$profit = $jumlahJual-$jumlahModal;
-		
+		$stokAkhir = $this->input->post('stokAkhir');
 		$penjualan = array();
+		$ambilStok = array();
 		$index = 0;
 
 		foreach ($count as $banyakData) {
@@ -87,7 +67,12 @@ Class Penjualan extends CI_Controller {
 				'modal' => $hargaModal[$index],
 				'jual' => $jual[$index],
 				'jumlah' => $jumlah[$index], 
-				'total' => $total[$index] ));
+				'total' => $total[$index] 
+			));
+			array_push($ambilStok, array(
+				'id' => $idProduk[$index],
+				'stok' => $stokAkhir[$index], 
+			));
 			$index++;
 		}
 
@@ -106,7 +91,7 @@ Class Penjualan extends CI_Controller {
 		$prosesBayar = $this->PenjualanModel->prosesPembayaran($pembayaran);
 
 		if($prosesJual != null && $prosesBayar !=null){
-			//$this->load->view('notapenjualan', $penjualan);
+			$this->PenjualanModel->kurangiStok($ambilStok);
 			redirect('nota');
 		}
 		else{

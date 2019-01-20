@@ -27,7 +27,7 @@ class User extends CI_Controller {
 	public function index() {
 		
 
-		$this->load->view('home');
+		$this->load->view('landing');
 	}
 	
 	/**
@@ -152,9 +152,9 @@ class User extends CI_Controller {
 				$data->error = 'Wrong username or password.';
 				
 				// send error to the view
-				$this->load->view('header');
-				$this->load->view('user/login/login', $data);
-				$this->load->view('footer');
+				$this->load->view('landing');
+				//$this->load->view('user/login/login', $data);
+				//$this->load->view('footer');
 				
 			}
 			
@@ -181,7 +181,7 @@ class User extends CI_Controller {
 			}
 			
 			// user logout ok
-			$this->load->view('home');
+			$this->load->view('landing');
 			
 		} else {
 			
