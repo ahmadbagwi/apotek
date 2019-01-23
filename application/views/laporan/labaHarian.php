@@ -33,32 +33,27 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 						<input type="submit" name="cari" value="Cari">
 						<?php form_close();?>
 					</legend>
-                        <?php
-                        foreach ($labaHarian->result_array() as $laba) { 
-                            }
-						?>
-					   <p>Tanggal <strong><?php $tgl = $laba['tanggal']; echo substr($tgl, 0, 11);?></strong>
-                        
-                       <table class="table table-striped" style="font-size: 12px">
+                        <p>Tanggal <strong><?php echo "<h2>".$tanggal."<h2>";?></strong>
+                        <table class="table table-striped" style="font-size: 12px">
                                  <tr>
                                      <th>Kode</th>
                                      <th>Transaksi Modal</td>
                                      <th>Transaksi Jual</th>
                                      <th>Profit</th>
                                  </tr>
-                                 <?php foreach ($labaHarian->result_array() as $keuntungan) { ?>
+                                 <?php foreach ($labaHarian as $profitHarian) { ?>
                                  <tr>
-                                     <td><?php echo $keuntungan['kode'];?></td>
-                                     <td><?php echo $keuntungan['jumlahModal'];?></td>
-                                     <td><?php echo $keuntungan['jumlahJual'];?></td>
-                                     <td><?php echo $keuntungan['profit'];?></td>
+                                     <td><?php echo $profitHarian['kode']; ?></td>
+                                     <td><?php echo $profitHarian['jumlahModal'];?></td>
+                                     <td><?php echo $profitHarian['jumlahJual'];?></td>
+                                     <td><?php echo $profitHarian['profit'];?></td>
                                  </tr>
-                                <?php } foreach ($totalLabaHarian->result_array() as $totalLaba) { }?>
+                                <?php } ?>
                                  <tr>
                                      <td></td>
                                      <td></td>
                                      <td><strong>Total Profit</strong></td>
-                                     <td><strong><?php echo $totalLaba['profit'];?></strong></td>
+                                     <td><strong><?php echo $totalLabaHarian;?></strong></td>
                                  </tr>
                              </table>                   
                 </div><!--div-col-12-->
@@ -103,6 +98,3 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </script>
 </body>
 </html>
-
-
-

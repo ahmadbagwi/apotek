@@ -16,7 +16,6 @@ Class PenjualanModel extends CI_Model {
 
     function prosesPenjualan($penjualan) {
         return $this->db->insert_batch('penjualan', $penjualan);
-        return $penjualan;
     }
 
     function prosesPembayaran($pembayaran) {

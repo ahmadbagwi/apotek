@@ -40,7 +40,11 @@ class Stokmasuk extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
+        $data['title'] = "Daftar Transaksi Stok Masuk";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('stokmasuk/stokMasuk_list', $data);
+        $this->load->view('admin/footer');
     }
 
     public function read($id) 
@@ -57,7 +61,11 @@ class Stokmasuk extends CI_Controller
 		'jumlah' => $row->jumlah,
 		'modal' => $row->modal,
 	    );
+            $data['title'] = "Detail Transaksi Stok Masuk";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/sidebar');
             $this->load->view('stokmasuk/stokMasuk_read', $data);
+            $this->load->view('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('stokmasuk'));
@@ -78,7 +86,11 @@ class Stokmasuk extends CI_Controller
 	    'jumlah' => set_value('jumlah'),
 	    'modal' => set_value('modal'),
 	);
+        $data['title'] = "Buat Transaksi Stok Masuk";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('stokmasuk/stokMasuk_form', $data);
+        $this->load->view('admin/footer');
     }
     
     public function create_action() 
@@ -128,7 +140,11 @@ class Stokmasuk extends CI_Controller
 		'jumlah' => set_value('jumlah', $row->jumlah),
 		'modal' => set_value('modal', $row->modal),
 	    );
+            $data['title'] = "Update Transaksi Stok Masuk";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/sidebar');
             $this->load->view('stokmasuk/stokMasuk_form', $data);
+            $this->load->view('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('stokmasuk'));

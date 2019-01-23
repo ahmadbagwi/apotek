@@ -13,8 +13,13 @@ Class Laporan extends CI_Controller {
 		if ($tanggal===null) {
 			$tanggal = date('Y-m-d');
 		}
+		$data['tanggal'] = $tanggal;
+		$data['title'] = "Riwayat Transaksi";
 		$data['detailHarian'] = $this->LaporanModel->detailHarian($tanggal);
-		$this->load->view('laporan/detailHarian', $data);	
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/laporan/detailHarian');
+		$this->load->view('admin/footer');	
 	}
 
 	function labaHarian() {
@@ -22,11 +27,17 @@ Class Laporan extends CI_Controller {
 		if ($tanggal===null) {
 			$tanggal = date('Y-m-d');
 		}
+		$this->load->model('PembatalantransaksiModel');
+		$data['dataPembatalan'] = $this->PembatalantransaksiModel->daftarPembatalan($tanggal);
 
+		$data['tanggal'] = $tanggal;
 		$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
 		$data['totalLabaHarian'] = $this->LaporanModel->totalLabaHarian($tanggal);
-		$this->load->view('laporan/labaHarian', $data);
-
+		$data['title'] = "Laporan Transaksi Harian";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/laporan/labaharian', $data);
+		$this->load->view('admin/footer');
 	}
 
 	function labaBulanan() {
@@ -38,8 +49,11 @@ Class Laporan extends CI_Controller {
 		$tanggal = substr($tanggal, 0,7);
 		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
 		$data['tanggal'] = substr($tanggal, 0,8);
-		$this->load->view('laporan/labaBulanan', $data);
-		
+		$data['title'] = "Laporan Transaksi Bulanan";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/laporan/labaBulanan', $data);
+		$this->load->view('admin/footer');
 		
 
 	}

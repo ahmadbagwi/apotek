@@ -1,31 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php if ($_SESSION['user_id']==null) {
-    header('location:/apotek/');
-    } else {
-        if ($_SESSION['is_admin']==0) {
-            $idadmin = $_SESSION['user_id'];
-        }
-    }
-?>
-<!doctype html>
-<html>
-    <head>
-        <title>Daftar Produk | Apotek Budi Farma</title>
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
-        <script src="<?php echo base_url('assets/js/'); ?>jquery-3.3.1.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>jquery-ui.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>simple.money.format.js"></script>
-        <script src="<?php echo base_url('assets/bootstrap/js/'); ?>bootstrap.min.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>material.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row jumbotron">
-                <div class="col-md-12">
                     <legend>Daftar Produk | Apotek Budi Farma</legend>
                         <div class="col-md-12 text-right">
                             <form action="<?php echo site_url('stok/index'); ?>" class="form-inline" method="get">
@@ -108,17 +80,3 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                     <?php echo $pagination ?>
                                 </div>
                             </div>
-                    <div class="footer">
-                    <div class="col-md-12">
-                        <table class="table table-striped">
-                            <tr>
-                                <td>&copy; Apotek Budi Farma 2019</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>      
-                </div>      
-            </div>                
-        </div>                    
-    </body>
-</html>

@@ -8,8 +8,12 @@ Class Penjualan extends CI_Controller {
 	}
 
 	public function index() {
+		$data['title'] = "Transaksi";
 		$this->load->library('form_validation');
-		$this->load->view('penjualan');
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/penjualan');
+		$this->load->view('admin/footer');
 	}
 
     public function get_autocomplete(){
@@ -95,7 +99,7 @@ Class Penjualan extends CI_Controller {
 			redirect('nota');
 		}
 		else{
-			$this->load->view('dashboard');
+			$this->load->view('admin/dashboard');
 		}
     }
 }

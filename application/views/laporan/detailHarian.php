@@ -31,6 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 					<input type="text" name="tanggalCari" class="date datepicker" placeholder="cari tanggal">
 					<input type="submit" name="cari" value="Cari">
 					<?php form_close();?>
+                    <?php echo $tanggal;?>
                         <?php
 						$this->table->set_heading('Kode Transaksi', 'Tanggal', 'Kasir', 'Produk', 'Id Produk', 'Harga', 'Jumlah', 'Total');
 						$template = array (
@@ -40,8 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 						echo $this->table->generate($detailHarian);
                         ?>
                         <?php
-                        foreach ($detailHarian->result_array() as $detail) { 
-                            }
+                        //foreach ($detailHarian->result_array() as $detail) { 
+                          //  }
                         ?>
                       
             </div>

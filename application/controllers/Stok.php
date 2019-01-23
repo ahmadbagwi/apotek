@@ -40,7 +40,11 @@ class Stok extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
+        $data['title'] = "Daftar Produk";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('stok/stok_list', $data);
+        $this->load->view('admin/footer');
     }
 
     public function read($id) 
@@ -57,7 +61,11 @@ class Stok extends CI_Controller
 		'jual' => $row->jual,
 		'dibuat' => $row->dibuat,
 	    );
+            $data['title'] = "Detail Stok";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/sidebar');
             $this->load->view('stok/stok_read', $data);
+            $this->load->view('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('stok'));
@@ -78,7 +86,11 @@ class Stok extends CI_Controller
 	    'jual' => set_value('jual'),
 	    'dibuat' => set_value('dibuat'),
 	);
+        $data['title'] = "Tambah Produk";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('stok/stok_form', $data);
+        $this->load->view('admin/footer');
     }
     
     public function create_action() 
