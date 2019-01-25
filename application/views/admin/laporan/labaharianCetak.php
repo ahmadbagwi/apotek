@@ -1,8 +1,4 @@
     					<div class="konten">
-                            <?php echo form_open('Laporan/labaHarian', array('method'=>'get'));?>
-    						<input type="text" name="tanggalCari" class="date datepicker" placeholder="Cari tanggal">
-    						<input type="submit" name="cari" value="Cari"><br>
-    						<?php form_close();?>
                             Menampilkan data <?php echo $tanggal;?>
                             <legend>Transaksi Sukses</legend>
                             <table class="table table-striped" style="font-size: 12px">
@@ -40,16 +36,5 @@
                             $this->table->set_template($template);
                             echo $this->table->generate($dataPembatalan);
                             ?>
-                            <a href="<?php echo site_url('Laporan/cetakHarian') ?>" class="btn btn-success">Cetak/PDF</a>
-                            <script>
-    		            	$(document).ready(function (){
-    		            		
-    		            		$("body").on('focus', ' .datepicker', function () {
-    		            			$(this).datepicker({
-    		            				dateFormat: "yy-mm-dd"
-    		            			});
-    		            		});
-    		            	
-    		            	});
-    		                </script>
+                            
                         </div><!--/Konten-->

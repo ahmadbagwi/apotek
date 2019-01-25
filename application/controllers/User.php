@@ -29,8 +29,8 @@ class User extends CI_Controller {
 		$this->load->view('landing');
 	}
 
-	public function list() {
-		$data['daftarAkun'] = $this->user_model->list();
+	public function daftarAkun() {
+		$data['daftarAkun'] = $this->user_model->daftarAkun();
 		$data['title'] = "Daftar Akun";
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/sidebar');

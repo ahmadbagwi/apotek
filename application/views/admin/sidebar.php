@@ -36,6 +36,10 @@
             <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk') ?>">Daftar Transaksi Stok Masuk</a>
             <a class="dropdown-item <?php if($title=='Tambah Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk/create') ?>">Tambah Stok Masuk</a>
             <!--<a class="dropdown-item <?php // if($title=='Tambah Stok Masuk Masal'){echo 'active';}?>" href="#">Tambah Stok Masuk Masal</a>-->
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Suplier:</h6>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('supplier') ?>">Daftar Suplier</a>
+            <a class="dropdown-item <?php if($title=='Tambah Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('supplier/create') ?>">Tambah Suplier</a>
           </div>
         </li>
 
@@ -57,12 +61,12 @@
       
        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-cogs"></i>
             <span>Pengaturan</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Akun:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Akun'){echo 'active';}?>" href="<?php echo site_url('user/list') ?>">Daftar Akun</a>
+            <a class="dropdown-item <?php if($title=='Daftar Akun'){echo 'active';}?>" href="<?php echo site_url('user/daftarAkun') ?>">Daftar Akun</a>
             <a class="dropdown-item <?php if($title=='Buat Akun'){echo 'active';}?>" href="<?php echo site_url('user/register') ?>">Buat Akun</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Aplikasi:</h6>

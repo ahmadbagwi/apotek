@@ -40,7 +40,11 @@ class Supplier extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
+        $data['title'] = "Daftar Suplier";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('supplier/supplier_list', $data);
+        $this->load->view('admin/footer');
     }
 
     public function read($id) 
@@ -54,7 +58,11 @@ class Supplier extends CI_Controller
 		'hp' => $row->hp,
 		'jenis' => $row->jenis,
 	    );
+            $data['title'] = "Detail Suplier";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/sidebar');
             $this->load->view('supplier/supplier_read', $data);
+            $this->load->view('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('supplier'));
@@ -72,7 +80,11 @@ class Supplier extends CI_Controller
 	    'hp' => set_value('hp'),
 	    'jenis' => set_value('jenis'),
 	);
+        $data['title'] = "Buat Suplier";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/sidebar');
         $this->load->view('supplier/supplier_form', $data);
+        $this->load->view('admin/footer');
     }
     
     public function create_action() 

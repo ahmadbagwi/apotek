@@ -13,16 +13,17 @@ Class Dashboard extends CI_Controller {
 	public function index() {
 		$tanggal = $this->input->get('tanggalCari');
 		if ($tanggal===null) {
-			$tanggal = date('Y-m-d');
+			$tanggal = date('Y-m-');
 		}
 		$data['tanggal'] = $tanggal;
 		$data['jumlahProduk'] = $this->DashboardModel->jumlahProduk();
 		$data['jumlahTransaksi'] = $this->DashboardModel->jumlahTransaksi();
 		$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
+		$data['profitBulanan'] = $this->LaporanModel->laba_bulanan($tanggal);
 		$data['title'] = "Dashboard";
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/sidebar');
-		$this->load->view('admin/dashboard');
+		$this->load->view('admin/dashboard', $data);
 		$this->load->view('admin/footer');
 	}
 }

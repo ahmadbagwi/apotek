@@ -1,40 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php if ($_SESSION['user_id']==null) {
-    header('location:/apotek/');
-    } else {
-        if ($_SESSION['is_admin']==0) {
-            $idadmin = $_SESSION['user_id'];
-        }
-    }
-?>
-<!doctype html>
-<html>
-    <head>
-        <title>Daftar Supplier | Apotek Budi Farma</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>material-fullpalette.min.css">
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/'); ?>jquery-ui.css">
-        <script src="<?php echo base_url('assets/js/'); ?>jquery-3.3.1.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>jquery-ui.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>simple.money.format.js"></script>
-        <script src="<?php echo base_url('assets/bootstrap/js/'); ?>bootstrap.min.js"></script>
-        <script src="<?php echo base_url('assets/js/'); ?>material.min.js"></script>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row jumbotron">
                     <h2 style="margin-top:0px">Daftar Supplier</h2>
                     <div class="row" style="margin-bottom: 10px">
                         <div class="col-md-4">
-                            <?php echo anchor(site_url('supplier/create'),'Create', 'class="btn btn-primary"'); ?>
+                            <?php echo anchor(site_url('supplier/create'),'Baru', 'class="btn btn-primary"'); ?>
                         </div>
                         <div class="col-md-4 text-center">
                             <div style="margin-top: 8px" id="message">
@@ -62,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             </form>
                         </div>
                     </div>
-                    <table class="table table-bordered" style="margin-bottom: 10px">
+                    <table class="table table-bordered" style="margin-bottom: 10px; font-size: 12px">
                         <tr>
                             <th>No</th>
             		<th>Nama</th>
@@ -102,8 +69,4 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?php echo $pagination ?>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+               

@@ -33,7 +33,7 @@ class User_model extends CI_Model {
 	 * @param mixed $address
 	 * @return bool true on success, false on failure
 	 */
-	public function create_user($username, $email, $password, $full_name, $phone, $address, $foto) {
+	public function create_user($username, $email, $password, $full_name, $phone, $address) {
 		
 		$data = array(
 			'username'   => $username,
@@ -51,7 +51,7 @@ class User_model extends CI_Model {
 		
 	}
 
-	public function list(){
+	public function daftarAkun(){
 		$this->db->select('id, username, email, full_name, phone, last_login');
 		$this->db->from('users');
 		$query = $this->db->get();
