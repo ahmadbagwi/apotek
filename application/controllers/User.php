@@ -20,6 +20,8 @@ class User extends CI_Controller {
 		$this->load->library(array('session'));
 		$this->load->helper(array('url'));
 		$this->load->model('user_model');
+		$this->load->model('DashboardModel');
+		$this->load->model('LaporanModel');
 		
 	}
 	
@@ -93,7 +95,7 @@ class User extends CI_Controller {
 			$this->load->library('upload', $config);
 			//$this->upload->register('foto');
 
-			if ($this->user_model->create_user($username, $email, $password, $full_name, $phone, $address, $foto)) {
+			if ($this->user_model->create_user($username, $email, $password, $full_name, $phone, $address)) {
 
 				// user creation ok
 				$this->load->view('admin/header');
@@ -165,9 +167,14 @@ class User extends CI_Controller {
 				// user login ok
 				$id = $_SESSION['user_id']; 
 				$this->user_model->checkin($id);
-				$this->load->view('admin/header', $data);
+				$tanggal = date('Y-m-d');
+				$dataz['jumlahProduk'] = $this->DashboardModel->jumlahProduk();
+				$dataz['jumlahTransaksi'] = $this->DashboardModel->jumlahTransaksi();
+				$dataz['profitBulanan'] = $this->LaporanModel->laba_bulanan($tanggal);
+				$dataz['title'] = "Dashboard";
+				$this->load->view('admin/header', $dataz);
 				$this->load->view('admin/sidebar');
-				$this->load->view('admin/dashboard');
+				$this->load->view('admin/dashboard', $dataz);
 				$this->load->view('admin/footer');
 				
 			} else {

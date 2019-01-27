@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); 
 Class NotaModel extends CI_Model {
 	function kodeTerakhir() {
-		$this->db->select('kode')->from('pembayaran')->order_by('kode', 'DESC')->limit(1);
+		$this->db->select('kode')->from('pembayaran')->order_by('id', 'DESC')->limit(1);
 		$kode = $this->db->get();
 		if ($kode->num_rows() > 0) {
          return $kode->row()->kode;

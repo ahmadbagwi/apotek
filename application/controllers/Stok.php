@@ -18,11 +18,11 @@ class Stok extends CI_Controller
         $start = intval($this->input->get('start'));
         
         if ($q <> '') {
-            $config['base_url'] = base_url() . 'stok/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'stok/index.html?q=' . urlencode($q);
+            $config['base_url'] = base_url() . 'stok/?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 'stok/?q=' . urlencode($q);
         } else {
-            $config['base_url'] = base_url() . 'stok/index.html';
-            $config['first_url'] = base_url() . 'stok/index.html';
+            $config['base_url'] = base_url() . 'stok/';
+            $config['first_url'] = base_url() . 'stok/';
         }
 
         $config['per_page'] = 10;

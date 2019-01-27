@@ -55,7 +55,7 @@
         <div class="col-md-12">
             <div id="footer" class="row cetak">
                 <a href="<?php echo site_url('penjualan') ?>" class="btn btn-success">Transaksi lagi</a>
-                <button class="print btn btn-warning"><a href="<?php echo base_url('Nota/cetakNota');?>"> Cetak Nota</a></button>
+                <a href="<?php echo site_url('Nota/cetakNota') ?>" target="_blank" class="btn btn-success">Cetak/PDF</a>
             </div>
         </div>
 

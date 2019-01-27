@@ -1,9 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class pdf {
+class Xpdf {
 
 
-	function pdf()
+	function Xpdf()
 
 	{
 

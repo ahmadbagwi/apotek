@@ -17,7 +17,7 @@
             <a class="dropdown-item <?php if($title=='Transaksi'){echo 'active';}?>" href="<?php echo site_url('penjualan') ?>">Transaksi</a>
             <a class="dropdown-item <?php if($title=='Pembatalan Transaksi'){echo 'active';}?>" href="<?php echo site_url('PembatalanTransaksi') ?>">Pembatalan Transaksi</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Lihat Transaksi:</h6>
+            <h6 class="dropdown-header">Data Transaksi:</h6>
             <a class="dropdown-item <?php if($title=='Riwayat Transaksi'){echo 'active';}?>" href="<?php echo site_url('laporan/detailHarian') ?>">Riwayat Transaksi</a>
           </div>
         </li>
@@ -27,19 +27,16 @@
             <span>Data Master</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Stok:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Produk'){echo 'active';}?>" href="<?php echo site_url('stok') ?>">Daftar Produk</a>
-            <a class="dropdown-item <?php if($title=='Tambah Produk'){echo 'active';}?>" href="<?php echo site_url('stok/create') ?>">Tambah Produk</a>
-            <!--<a class="dropdown-item <?php// if($title=='Tambah Produk Masal'){echo 'active';}?>" href="#">Tambah Produk Masal</a>-->
+            <a class="dropdown-item <?php if($title=='Daftar Produk'){echo 'active';}?>" href="<?php echo site_url('stok') ?>">Produk</a>
+          
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Stok Masuk:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk') ?>">Daftar Transaksi Stok Masuk</a>
-            <a class="dropdown-item <?php if($title=='Tambah Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk/create') ?>">Tambah Stok Masuk</a>
-            <!--<a class="dropdown-item <?php // if($title=='Tambah Stok Masuk Masal'){echo 'active';}?>" href="#">Tambah Stok Masuk Masal</a>-->
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk') ?>">Stok Masuk</a>
+           
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Suplier:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('supplier') ?>">Daftar Suplier</a>
-            <a class="dropdown-item <?php if($title=='Tambah Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('supplier/create') ?>">Tambah Suplier</a>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Suplier'){echo 'active';}?>" href="<?php echo site_url('supplier') ?>">Suplier</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item <?php if($title=='Daftar Retur Produk'){echo 'active';}?>" href="<?php echo site_url('retur') ?>">Retur Produk</a>
           </div>
         </li>
 
@@ -50,12 +47,12 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Tabel Laporan:</h6>
-            <a class="dropdown-item <?php if($title=='Laporan Transaksi Harian'){echo 'active';}?>" href="<?php echo site_url('laporan/labaHarian') ?>">Laporan Transaksi Harian</a>
-            <a class="dropdown-item <?php if($title=='Laporan Transaksi Bulanan'){echo 'active';}?>" href="<?php echo site_url('laporan/labaBulanan') ?>">Laporan Transaksi Bulanan</a>
+            <a class="dropdown-item <?php if($title=='Laporan Transaksi Harian'){echo 'active';}?>" href="<?php echo site_url('laporan/labaHarian') ?>">Laporan Harian</a>
+            <a class="dropdown-item <?php if($title=='Laporan Transaksi Bulanan'){echo 'active';}?>" href="<?php echo site_url('laporan/labaBulanan') ?>">Laporan Bulanan</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Konsinyasi:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Daftar Transaksi Konsinyasi</a>
-            <a class="dropdown-item <?php if($title=='Retur Produk'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Retur Produk</a>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Laporan Konsinyasi</a>
+            
           </div>
         </li>
       

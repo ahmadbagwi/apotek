@@ -40,7 +40,7 @@
                             $this->table->set_template($template);
                             echo $this->table->generate($dataPembatalan);
                             ?>
-                            <a href="<?php echo site_url('Laporan/cetakHarian') ?>" class="btn btn-success">Cetak/PDF</a>
+                            <a href="<?php echo site_url('Laporan/cetakHarian') ?>" target="_blank" class="btn btn-success">Cetak/PDF</a>
                             <script>
     		            	$(document).ready(function (){
     		            		

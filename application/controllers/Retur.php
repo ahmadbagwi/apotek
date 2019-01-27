@@ -3,12 +3,12 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Stokmasuk extends CI_Controller
+class Retur extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('StokmasukModel');
+        $this->load->model('ReturModel');
         $this->load->library('form_validation');
     }
 
@@ -18,38 +18,38 @@ class Stokmasuk extends CI_Controller
         $start = intval($this->input->get('start'));
         
         if ($q <> '') {
-            $config['base_url'] = base_url() . 'stokmasuk/?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'stokmasuk/?q=' . urlencode($q);
+            $config['base_url'] = base_url() . 'retur/?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 'retur/?q=' . urlencode($q);
         } else {
-            $config['base_url'] = base_url() . 'stokmasuk/';
-            $config['first_url'] = base_url() . 'stokmasuk/';
+            $config['base_url'] = base_url() . 'retur/';
+            $config['first_url'] = base_url() . 'retur/';
         }
 
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->StokmasukModel->total_rows($q);
-        $stokmasuk = $this->StokmasukModel->get_limit_data($config['per_page'], $start, $q);
+        $config['total_rows'] = $this->ReturModel->total_rows($q);
+        $retur = $this->ReturModel->get_limit_data($config['per_page'], $start, $q);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
         $data = array(
-            'stokmasuk_data' => $stokmasuk,
+            'retur_data' => $retur,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $data['title'] = "Daftar Transaksi Stok Masuk";
+        $data['title'] = "Daftar Retur Produk";
         $this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
-        $this->load->view('stokmasuk/stokMasuk_list', $data);
+        $this->load->view('retur/retur_list', $data);
         $this->load->view('admin/footer');
     }
 
     public function read($id) 
     {
-        $row = $this->StokmasukModel->get_by_id($id);
+        $row = $this->ReturModel->get_by_id($id);
         if ($row) {
             $data = array(
 		'id' => $row->id,
@@ -61,14 +61,14 @@ class Stokmasuk extends CI_Controller
 		'jumlah' => $row->jumlah,
 		'modal' => $row->modal,
 	    );
-            $data['title'] = "Detail Transaksi Stok Masuk";
-            $this->load->view('admin/header', $data);
-            $this->load->view('admin/sidebar');
-            $this->load->view('stokmasuk/stokMasuk_read', $data);
-            $this->load->view('admin/footer');
+            $data['title'] = "Detail Retur Produk";
+            $this->load->veiw('admin/header', $data);
+            $this->load->veiw('admin/sidebar');
+            $this->load->view('retur/retur_read', $data);
+            $this->load->veiw('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         }
     }
 
@@ -76,7 +76,7 @@ class Stokmasuk extends CI_Controller
     {
         $data = array(
             'button' => 'Create',
-            'action' => site_url('stokmasuk/create_action'),
+            'action' => site_url('retur/create_action'),
 	    'id' => set_value('id'),
 	    'idUser' => set_value('idUser'),
 	    'idSuplier' => set_value('idSuplier'),
@@ -86,10 +86,10 @@ class Stokmasuk extends CI_Controller
 	    'jumlah' => set_value('jumlah'),
 	    'modal' => set_value('modal'),
 	);
-        $data['title'] = "Buat Transaksi Stok Masuk";
+        $data['title'] = "Buat Retur Produk";
         $this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
-        $this->load->view('stokmasuk/stokMasuk_form', $data);
+        $this->load->view('retur/retur_form', $data);
         $this->load->view('admin/footer');
     }
     
@@ -108,29 +108,24 @@ class Stokmasuk extends CI_Controller
 		'tanggal' => $this->input->post('tanggal',TRUE),
 		'jumlah' => $this->input->post('jumlah',TRUE),
 		'modal' => $this->input->post('modal',TRUE),
-
 	    );
-    
-        $id = $this->input->post('idProduk');
-        $stok = $this->input->post('stokAkhir');
-        $modal = $this->input->post('modal');
-        
-
-            $this->StokmasukModel->insert($data);
-            $this->StokmasukModel->updateStok($id, $stok, $modal);
+            $idProduk = $this->input->post('idProduk',TRUE);
+            $jumlah = $this->input->post('jumlah',TRUE);
+            $this->ReturModel->insert($data);
+            $this->ReturModel->updateStok($idProduk, $jumlah);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         }
     }
     
     public function update($id) 
     {
-        $row = $this->StokmasukModel->get_by_id($id);
+        $row = $this->ReturModel->get_by_id($id);
 
         if ($row) {
             $data = array(
                 'button' => 'Update',
-                'action' => site_url('stokmasuk/update_action'),
+                'action' => site_url('retur/update_action'),
 		'id' => set_value('id', $row->id),
 		'idUser' => set_value('idUser', $row->idUser),
 		'idSuplier' => set_value('idSuplier', $row->idSuplier),
@@ -140,14 +135,14 @@ class Stokmasuk extends CI_Controller
 		'jumlah' => set_value('jumlah', $row->jumlah),
 		'modal' => set_value('modal', $row->modal),
 	    );
-            $data['title'] = "Update Transaksi Stok Masuk";
+            $data['title'] = "Update Retur Produk";
             $this->load->view('admin/header', $data);
             $this->load->view('admin/sidebar');
-            $this->load->view('stokmasuk/stokMasuk_form', $data);
+            $this->load->view('retur/retur_form', $data);
             $this->load->view('admin/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         }
     }
     
@@ -168,23 +163,23 @@ class Stokmasuk extends CI_Controller
 		'modal' => $this->input->post('modal',TRUE),
 	    );
 
-            $this->StokmasukModel->update($this->input->post('id', TRUE), $data);
+            $this->ReturModel->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         }
     }
     
     public function delete($id) 
     {
-        $row = $this->StokmasukModel->get_by_id($id);
+        $row = $this->ReturModel->get_by_id($id);
 
         if ($row) {
-            $this->StokmasukModel->delete($id);
+            $this->ReturModel->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('stokmasuk'));
+            redirect(site_url('retur'));
         }
     }
 
@@ -205,8 +200,8 @@ class Stokmasuk extends CI_Controller
     public function excel()
     {
         $this->load->helper('exportexcel');
-        $namaFile = "stokMasuk.xls";
-        $judul = "stokMasuk";
+        $namaFile = "retur.xls";
+        $judul = "retur";
         $tablehead = 0;
         $tablebody = 1;
         $nourut = 1;
@@ -232,14 +227,14 @@ class Stokmasuk extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Jumlah");
 	xlsWriteLabel($tablehead, $kolomhead++, "Modal");
 
-	foreach ($this->StokmasukModel->get_all() as $data) {
+	foreach ($this->ReturModel->get_all() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->idUser);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->idSuplier);
-	    xlsWriteNumber($tablebody, $kolombody++, $data->namaProduk);
+	    xlsWriteLabel($tablebody, $kolombody++, $data->namaProduk);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->idProduk);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->jumlah);
@@ -255,8 +250,8 @@ class Stokmasuk extends CI_Controller
 
 }
 
-/* End of file Stokmasuk.php */
-/* Location: ./application/controllers/Stokmasuk.php */
+/* End of file Retur.php */
+/* Location: ./application/controllers/Retur.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2019-01-20 07:23:24 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2019-01-27 12:56:55 */
 /* http://harviacode.com */

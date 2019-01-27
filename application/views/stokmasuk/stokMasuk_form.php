@@ -90,7 +90,7 @@
                             select: function (event, ui){
                                 //tr = $(this).parents('tr');
                                 $('[name="namaSupplier"]').val(ui.item.data.name);
-                                $('[name="idSuplier"]').val(ui.item.data.idProduk);
+                                $('[name="idSuplier"]').val(ui.item.data.idSuplier);
                             }
                         })
                     })

@@ -41,20 +41,20 @@ Class Laporan extends CI_Controller {
 	}
 
 	function cetakHarian() {
-		$this->load->model('PembatalantransaksiModel');
-		$tanggal = date('Y-m-d');
-		$data['tanggal'] = $tanggal;
-		$data['dataPembatalan'] = $this->PembatalantransaksiModel->daftarPembatalan($tanggal);
-		$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
-		$data['totalLabaHarian'] = $this->LaporanModel->totalLabaHarian($tanggal);
-
 		$pdfFilePath = FCPATH."/assets/files/$filename.pdf";
 
 		if (file_exists($pdfFilePath) == FALSE) {	
-			$html = $this->load->view('admin/laporan/labaharian', $data);
-			$html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-			$pdf->allow_charset_conversion=true;
-			$pdf->charset_in='UTF-8';
+			$this->load->model('PembatalantransaksiModel');
+			$tanggal = date('Y-m-d');
+			$data['tanggal'] = $tanggal;
+			$data['dataPembatalan'] = $this->PembatalantransaksiModel->daftarPembatalan($tanggal);
+			$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
+			$data['totalLabaHarian'] = $this->LaporanModel->totalLabaHarian($tanggal);
+		
+			$html = $this->load->view('admin/laporan/labaharianCetak', $data, true);
+			//$html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+			//$pdf->allow_charset_conversion=true;
+			//$pdf->charset_in='UTF-8';
 			$this->load->library('pdf');
 			$pdf = $this->pdf->load();
 			$pdf->WriteHTML($html);

@@ -40,7 +40,7 @@ class Supplier extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $data['title'] = "Daftar Suplier";
+        $data['title'] = "Daftar Transaksi Suplier";
         $this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
         $this->load->view('supplier/supplier_list', $data);
@@ -181,7 +181,7 @@ class Supplier extends CI_Controller
             foreach ($query as $row)
                 $result[] = array(
                     'name' => $row->nama,
-                    'idProduk' => $row->id,
+                    'idSuplier' => $row->id,
                 );
                 $json = json_encode($result);
                 echo $json;

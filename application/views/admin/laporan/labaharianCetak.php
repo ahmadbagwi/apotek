@@ -1,7 +1,7 @@
     					<div class="konten">
-                            Menampilkan data <?php echo $tanggal;?>
-                            <legend>Transaksi Sukses</legend>
-                            <table class="table table-striped" style="font-size: 12px">
+                            <h2>Menampilkan data laporan <?php echo $tanggal;?></h2>
+                            <h3>Transaksi Sukses</h3>
+                            <table class="table table-striped" border="1" cellpadding="2" style="font-size: 12px">
                                      <tr>
                                          <th>Kasir</th>
                                          <th>Kode</th>
@@ -26,15 +26,13 @@
                                          <td><strong><?php echo $totalLabaHarian;?></strong></td>
                                      </tr>
                             </table>
-
                             <?php
-                            echo "<br><legend>Transaksi Dibatalkan</legend>";
+                            echo "<br><h3>Transaksi Dibatalkan</h3>";
                             $this->table->set_heading('Kasir', 'Kode', 'Produk', 'Jumlah', 'Nilai');
                             $template = array (
-                                        'table_open' => '<table border="0" style="width: 100%;font-size:12px;" class="table table-striped">',
+                                        'table_open' => '<table border="1" cellpadding="2" style="width: 100%;font-size:12px;" class="table table-striped">',
                                         );
                             $this->table->set_template($template);
                             echo $this->table->generate($dataPembatalan);
-                            ?>
-                            
-                        </div><!--/Konten-->
+                            ?>                           
+                        </div>
