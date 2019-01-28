@@ -1,31 +1,31 @@
-                <h2 style="margin-top:0px">Retur <?php echo $button ?></h2>
+                <h2 style="margin-top:0px">Retur produk</h2>
                 <form action="<?php echo $action; ?>" method="post">
-        	    <div class="form-group">
-                    <label for="int">IdUser <?php echo form_error('idUser') ?></label>
+        	    <div class="form-group" style="display: none">
+                    <label for="int">Id User <?php echo form_error('idUser') ?></label>
                     <input type="text" class="form-control" name="idUser" id="idUser" placeholder="IdUser" value="<?php echo $_SESSION['user_id']; ?>" />
                 </div>
                  <div class="form-group">
                         <label for="int">Nama Supplier</label>
                         <input type="text" class="namaSupplier form-control" name="namaSupplier" id="namaSupplier" placeholder="Nama Suplier"/>
                     </div>
-        	    <div class="form-group">
-                    <label for="int">IdSuplier <?php echo form_error('idSuplier') ?></label>
+        	    <div class="form-group" style="display: none">
+                    <label for="int">Id Suplier <?php echo form_error('idSuplier') ?></label>
                     <input type="text" class="form-control" name="idSuplier" id="idSuplier" placeholder="IdSuplier" value="<?php echo $idSuplier; ?>" />
                 </div>
         	    <div class="form-group">
-                    <label for="varchar">NamaProduk <?php echo form_error('namaProduk') ?></label>
+                    <label for="varchar">Nama Produk <?php echo form_error('namaProduk') ?></label>
                     <input type="text" class="form-control" name="namaProduk" id="namaProduk" placeholder="NamaProduk" value="<?php echo $namaProduk; ?>" />
                 </div>
-        	    <div class="form-group">
-                    <label for="int">IdProduk <?php echo form_error('idProduk') ?></label>
+        	    <div class="form-group" style="display: none">
+                    <label for="int">Id Produk <?php echo form_error('idProduk') ?></label>
                     <input type="text" class="form-control" name="idProduk" id="idProduk" placeholder="IdProduk" value="<?php echo $idProduk; ?>" />
                 </div>
                 <div class="form-group">
                         <label for="int">Stok yang Ada</label>
-                        <input type="text" class="stok form-control" readonly="" name="stok" id="stok" class="stok" placeholder="Stok produk yang ada" />
+                        <input type="text" class="stok form-control" readonly="" name="stok" id="stok" class="stok" placeholder="Stok produk yang ada di gudang" />
                     </div>
         	    <div class="form-group">
-                    <label for="datetime">Tanggal <?php echo form_error('tanggal') ?></label>
+                    <label for="datetime">Tanggal Retur<?php echo form_error('tanggal') ?></label>
                     <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php if($tanggal){ echo $tanggal; } else { echo date('Y-m-d H:i:s');} ?>" />
                 </div>
         	    <div class="form-group">
@@ -38,7 +38,7 @@
                     </div>
         	    <div class="form-group">
                     <label for="int">Modal <?php echo form_error('modal') ?></label>
-                    <input type="text" class="form-control" name="modal" id="modal" placeholder="Harga modal produ kyang diretur" value="<?php echo $modal; ?>" />
+                    <input type="text" class="form-control" name="modal" id="modal" placeholder="Harga modal produk yang diretur" value="<?php echo $modal; ?>" />
                 </div>
         	    <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
         	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
