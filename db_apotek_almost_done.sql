@@ -61,7 +61,7 @@ CREATE TABLE `pembatalan` (
   KEY `idProduk` (`idProduk`),
   CONSTRAINT `idProduk` FOREIGN KEY (`idProduk`) REFERENCES `stok` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +70,7 @@ CREATE TABLE `pembatalan` (
 
 LOCK TABLES `pembatalan` WRITE;
 /*!40000 ALTER TABLE `pembatalan` DISABLE KEYS */;
+INSERT INTO `pembatalan` VALUES (000001,'2019-01-28 14:27:52',007,'trx_20190128101722',100011,27000,2);
 /*!40000 ALTER TABLE `pembatalan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +95,7 @@ CREATE TABLE `pembayaran` (
   PRIMARY KEY (`id`),
   KEY `idUser` (`idUser`),
   CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,8 +104,34 @@ CREATE TABLE `pembayaran` (
 
 LOCK TABLES `pembayaran` WRITE;
 /*!40000 ALTER TABLE `pembayaran` DISABLE KEYS */;
-INSERT INTO `pembayaran` VALUES (1,'trx_20190124111748',007,'2019-01-24 11:17:48.000',37500,40500,42000,1500,3000,'sukses'),(2,'trx_20190225023716',004,'2019-02-25 02:37:16.000',62000,80000,100000,20000,18000,'sukses'),(3,'trx_20190125031817',007,'2019-01-25 03:18:17.000',86500,110000,200000,90000,23500,'sukses'),(4,'trx_20190127144130',007,'2019-01-27 14:41:30.000',54600,162000,170000,8000,107400,'sukses');
+INSERT INTO `pembayaran` VALUES (1,'trx_20190124111748',007,'2019-01-24 11:17:48.000',37500,40500,42000,1500,3000,'sukses'),(2,'trx_20190225023716',004,'2019-02-25 02:37:16.000',62000,80000,100000,20000,18000,'sukses'),(3,'trx_20190125031817',007,'2019-01-25 03:18:17.000',86500,110000,200000,90000,23500,'sukses'),(4,'trx_20190127144130',007,'2019-01-27 14:41:30.000',54600,162000,170000,8000,107400,'sukses'),(5,'trx_20190128101722',007,'2019-01-28 10:17:22.000',9100,27000,30000,3000,17900,'sukses'),(6,'trx_20190128112113',004,'2019-01-28 11:21:13.000',150000,200000,500000,300000,50000,'sukses'),(7,'trx_20190128113931',004,'2019-01-28 11:39:31.000',17100,47000,50000,3000,29900,'sukses');
 /*!40000 ALTER TABLE `pembayaran` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pengaturan`
+--
+
+DROP TABLE IF EXISTS `pengaturan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pengaturan` (
+  `id` int(3) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `nama` varchar(150) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `phone` varchar(14) NOT NULL,
+  `logo` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pengaturan`
+--
+
+LOCK TABLES `pengaturan` WRITE;
+/*!40000 ALTER TABLE `pengaturan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pengaturan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -133,7 +160,7 @@ CREATE TABLE `penjualan` (
   KEY `idUser` (`idUser`),
   CONSTRAINT `fk_iduser` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`idProduk`) REFERENCES `stok` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +169,7 @@ CREATE TABLE `penjualan` (
 
 LOCK TABLES `penjualan` WRITE;
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
-INSERT INTO `penjualan` VALUES (000001,'trx_20190124111748','2019-01-24 11:17:48','umum',007,'umum',100011,12500,13500,3,40500,'sukses'),(000002,'trx_20190225023716','2019-02-25 02:37:16','umum',004,'umum',100004,23500,30000,2,60000,'sukses'),(000003,'trx_20190225023716','2019-02-25 02:37:16','umum',004,'umum',100002,15000,20000,1,20000,'sukses'),(000004,'trx_20190125031817','2019-01-25 03:18:17','umum',007,'umum',100001,8000,10000,2,20000,'sukses'),(000005,'trx_20190125031817','2019-01-25 03:18:17','umum',007,'umum',100004,23500,30000,3,90000,'sukses'),(000006,'trx_20190127144130','2019-01-27 14:41:30','umum',007,'umum',100011,4550,13500,12,162000,'sukses');
+INSERT INTO `penjualan` VALUES (000001,'trx_20190124111748','2019-01-24 11:17:48','umum',007,'umum',100011,12500,13500,3,40500,'sukses'),(000002,'trx_20190225023716','2019-02-25 02:37:16','umum',004,'umum',100004,23500,30000,2,60000,'sukses'),(000003,'trx_20190225023716','2019-02-25 02:37:16','umum',004,'umum',100002,15000,20000,1,20000,'sukses'),(000004,'trx_20190125031817','2019-01-25 03:18:17','umum',007,'umum',100001,8000,10000,2,20000,'sukses'),(000005,'trx_20190125031817','2019-01-25 03:18:17','umum',007,'umum',100004,23500,30000,3,90000,'sukses'),(000006,'trx_20190127144130','2019-01-27 14:41:30','umum',007,'umum',100011,4550,13500,12,162000,'sukses'),(000007,'trx_20190128101722','2019-01-28 10:17:22','umum',007,'umum',100011,4550,13500,2,27000,'batal'),(000008,'trx_20190128112113','2019-01-28 11:21:13','umum',004,'umum',100012,15000,20000,10,200000,'sukses'),(000009,'trx_20190128113931','2019-01-28 11:39:31','umum',004,'umum',100011,4550,13500,2,27000,'sukses'),(000010,'trx_20190128113931','2019-01-28 11:39:31','umum',004,'umum',100010,4000,10000,2,20000,'sukses');
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +196,7 @@ CREATE TABLE `retur` (
   CONSTRAINT `retur_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `retur_ibfk_2` FOREIGN KEY (`idProduk`) REFERENCES `stok` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `retur_ibfk_3` FOREIGN KEY (`idSuplier`) REFERENCES `supplier` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +205,7 @@ CREATE TABLE `retur` (
 
 LOCK TABLES `retur` WRITE;
 /*!40000 ALTER TABLE `retur` DISABLE KEYS */;
-INSERT INTO `retur` VALUES (001,007,000001,'Komix',100011,'2019-01-27 14:19:35',15,3000),(002,007,000003,'Komix',100011,'2019-01-27 14:32:19',15,3000),(003,007,000001,'Komix',100011,'2019-01-27 14:38:54',15,4250);
+INSERT INTO `retur` VALUES (001,007,000001,'Komix',100011,'2019-01-27 14:19:35',15,3000),(002,007,000003,'Komix',100011,'2019-01-27 14:32:19',15,3000),(003,007,000001,'Komix',100011,'2019-01-27 14:38:54',15,4250),(004,004,000001,'OBH',100012,'2019-01-28 15:12:03',50,15000);
 /*!40000 ALTER TABLE `retur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +227,7 @@ CREATE TABLE `stok` (
   `dibuat` timestamp(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
   `jenis` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100012 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100013 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +236,7 @@ CREATE TABLE `stok` (
 
 LOCK TABLES `stok` WRITE;
 /*!40000 ALTER TABLE `stok` DISABLE KEYS */;
-INSERT INTO `stok` VALUES (100001,'Vitamin C','vitamin','untuk sariawan ',2,8000,10000,'2019-01-08 19:10:09.134',''),(100002,'Dancow','susu anak','susu untuk dibawah 1 tahun',2,15000,20000,'2019-01-08 19:07:05.173',''),(100003,'Betadin','obat luar','untuk luka berdarah',3,8000,10000,'2019-01-08 19:06:06.149',''),(100004,'Perban','Obat luar','untuk menutup luka',12,23500,30000,'2019-01-09 17:00:00.000',''),(100005,'Minyak Kayu Putih','Obat luar','obat masuk angin',7,5500,7500,'2019-01-16 19:04:17.000',''),(100006,'Vitamin A','obat','vitamin',1,14500,20000,'2019-01-18 07:59:18.000',''),(100007,'Minyak Telon','minyak','minyak',0,10000,15000,'2019-01-18 07:59:18.000',''),(100008,'Paracetamol','obat','obat',0,8000,10000,'2019-01-18 09:03:18.000',''),(100009,'Kapas','obat luar','kapas',10,1000,7500,'2019-01-20 09:57:20.000',''),(100010,'Tolak Angin','obat dalam','obat masuk angin',20,4000,10000,'2019-01-20 09:57:20.000',''),(100011,'Komix','obat dalam','obat untuk batuk berdahak',28,4550,13500,'2019-01-23 09:08:23.000','');
+INSERT INTO `stok` VALUES (100001,'Vitamin C','vitamin','untuk sariawan ',2,8000,10000,'2019-01-08 19:10:09.134',''),(100002,'Dancow','susu anak','susu untuk dibawah 1 tahun',2,15000,20000,'2019-01-08 19:07:05.173',''),(100003,'Betadin','obat luar','untuk luka berdarah',3,8000,10000,'2019-01-08 19:06:06.149',''),(100004,'Perban','Obat luar','untuk menutup luka',12,23500,30000,'2019-01-09 17:00:00.000',''),(100005,'Minyak Kayu Putih','Obat luar','obat masuk angin',7,5500,7500,'2019-01-16 19:04:17.000',''),(100006,'Vitamin A','obat','vitamin',1,14500,20000,'2019-01-18 07:59:18.000',''),(100007,'Minyak Telon','minyak','minyak',0,10000,15000,'2019-01-18 07:59:18.000',''),(100008,'Paracetamol','obat','obat',0,8000,10000,'2019-01-18 09:03:18.000',''),(100009,'Kapas','obat luar','kapas',10,1000,7500,'2019-01-20 09:57:20.000',''),(100010,'Tolak Angin','obat dalam','obat masuk angin',18,4000,10000,'2019-01-20 09:57:20.000',''),(100011,'Komix','obat dalam','obat untuk batuk berdahak',26,4550,13500,'2019-01-28 04:19:28.000','Konsinyasi'),(100012,'OBH','obat sirup','Obat Batuk',40,15000,20000,'2019-01-28 04:20:28.000','Suplier');
 /*!40000 ALTER TABLE `stok` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +337,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (004,'ahmadbagwi','ahmadbagwi.id@gmail.com','$2y$10$3VnPa9q7bIL9LFRtgXje8OYskLv18LXg0FeBRqTyZG0UCwRDf/kNK','','2019-01-01 12:00:28',NULL,0,0,0,NULL,NULL,NULL,NULL,'2019-01-25 10:28:06'),(007,'admin1','admin1@gmail.com','$2y$10$22Igtl2hmj6mIjRKVizG7uFdwxWGs1Ueb4BhLwYFyfPTZGJkBGT7y','','2019-01-18 14:01:00',NULL,0,0,0,'Admin 1','085719191852','Bogor',NULL,'2019-01-27 13:03:31');
+INSERT INTO `users` VALUES (004,'ahmadbagwi','ahmadbagwi.id@gmail.com','$2y$10$3VnPa9q7bIL9LFRtgXje8OYskLv18LXg0FeBRqTyZG0UCwRDf/kNK','','2019-01-01 12:00:28',NULL,0,0,0,NULL,NULL,NULL,NULL,'2019-01-28 15:08:45'),(007,'admin1','admin1@gmail.com','$2y$10$22Igtl2hmj6mIjRKVizG7uFdwxWGs1Ueb4BhLwYFyfPTZGJkBGT7y','','2019-01-18 14:01:00',NULL,0,0,0,'Admin 1','085719191852','Bogor',NULL,'2019-01-28 13:48:36');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -323,4 +350,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-27 18:21:42
+-- Dump completed on 2019-01-28 15:58:35
