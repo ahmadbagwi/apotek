@@ -22,7 +22,7 @@ Class Laporan extends CI_Controller {
 		$this->load->view('admin/footer');	
 	}
 
-	function labaHarian() {
+	public function labaHarian() {
 		$tanggal = $this->input->get('tanggalCari');
 		if ($tanggal===null) {
 			$tanggal = date('Y-m-d');
@@ -44,17 +44,16 @@ Class Laporan extends CI_Controller {
 		$pdfFilePath = FCPATH."/assets/files/$filename.pdf";
 
 		if (file_exists($pdfFilePath) == FALSE) {	
+
 			$this->load->model('PembatalantransaksiModel');
-			$tanggal = date('Y-m-d');
+			$tanggal = $this->input->get('tanggal');
 			$data['tanggal'] = $tanggal;
 			$data['dataPembatalan'] = $this->PembatalantransaksiModel->daftarPembatalan($tanggal);
 			$data['labaHarian'] = $this->LaporanModel->labaHarian($tanggal);
 			$data['totalLabaHarian'] = $this->LaporanModel->totalLabaHarian($tanggal);
 		
 			$html = $this->load->view('admin/laporan/labaharianCetak', $data, true);
-			//$html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-			//$pdf->allow_charset_conversion=true;
-			//$pdf->charset_in='UTF-8';
+
 			$this->load->library('pdf');
 			$pdf = $this->pdf->load();
 			$pdf->WriteHTML($html);
@@ -79,8 +78,45 @@ Class Laporan extends CI_Controller {
 		$this->load->view('admin/sidebar');
 		$this->load->view('admin/laporan/labaBulanan', $data);
 		$this->load->view('admin/footer');
-		
+	}
 
+	function konsinyasi() {
+		$tanggal = $this->input->get('tanggalCari');
+		if ($tanggal===null) {
+			$tanggal = date('Y-m-d');
+		}
+		$tanggal = substr($tanggal, 0,7);
+		$data['tanggal'] = $tanggal;
+		$data['konsinyasi'] = $this->LaporanModel->konsinyasi($tanggal);
+		$data['totalKonsinyasi'] = $this->LaporanModel->totalKonsinyasi($tanggal);
+		$data['title'] = "Laporan Konsinyasi";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/laporan/konsinyasi', $data);
+		$this->load->view('admin/footer');
+	}
+
+	function cetakKonsinyasi() {
+		$pdfFilePath = FCPATH."/assets/files/$filename.pdf";
+
+		if (file_exists($pdfFilePath) == FALSE) {	
+
+			$this->load->model('PembatalantransaksiModel');
+			$tanggal = $this->input->get('tanggal');
+			$data['tanggal'] = $tanggal;
+			$tanggal = substr($tanggal, 0,7);
+			$data['tanggal'] = $tanggal;
+			$data['konsinyasi'] = $this->LaporanModel->konsinyasi($tanggal);
+			$data['totalKonsinyasi'] = $this->LaporanModel->totalKonsinyasi($tanggal);
+
+			$html = $this->load->view('admin/laporan/cetakKonsinyasi', $data, true);
+
+			$this->load->library('pdf');
+			$pdf = $this->pdf->load();
+			$pdf->WriteHTML($html);
+			$pdf->Output($pdfFilePath, 'I');
+		}
+		redirect("/assets/files/$filename.pdf");
 	}
 }
 

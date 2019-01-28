@@ -60,6 +60,7 @@ class Stok extends CI_Controller
 		'modal' => $row->modal,
 		'jual' => $row->jual,
 		'dibuat' => $row->dibuat,
+        'jenis' => $row->jenis,
 	    );
             $data['title'] = "Detail Stok";
             $this->load->view('admin/header', $data);
@@ -85,6 +86,7 @@ class Stok extends CI_Controller
 	    'modal' => set_value('modal'),
 	    'jual' => set_value('jual'),
 	    'dibuat' => set_value('dibuat'),
+        'jenis' => set_value('jenis'),
 	);
         $data['title'] = "Tambah Produk";
         $this->load->view('admin/header', $data);
@@ -108,6 +110,7 @@ class Stok extends CI_Controller
 		'modal' => $this->input->post('modal',TRUE),
 		'jual' => $this->input->post('jual',TRUE),
 		'dibuat' => $this->input->post('dibuat',TRUE),
+        'jenis' => $this->input->post('jenis', TRUE),
 	    );
 
             $this->Stok_model->insert($data);
@@ -132,6 +135,7 @@ class Stok extends CI_Controller
 		'modal' => set_value('modal', $row->modal),
 		'jual' => set_value('jual', $row->jual),
 		'dibuat' => set_value('dibuat', $row->dibuat),
+        'jenis' => set_value('jenis', $row->jenis),
 	    );
              $data['title'] = "Tambah Stok Masuk";
             $this->load->view('admin/header', $data);
@@ -160,6 +164,7 @@ class Stok extends CI_Controller
 		'modal' => $this->input->post('modal',TRUE),
 		'jual' => $this->input->post('jual',TRUE),
 		'dibuat' => $this->input->post('dibuat',TRUE),
+        'jenis' => $this->input->post('jenis', TRUE),
 	    );
 
             $this->Stok_model->update($this->input->post('id', TRUE), $data);
@@ -191,6 +196,7 @@ class Stok extends CI_Controller
 	$this->form_validation->set_rules('modal', 'modal', 'trim|required');
 	$this->form_validation->set_rules('jual', 'jual', 'trim|required');
 	$this->form_validation->set_rules('dibuat', 'dibuat', 'trim|required');
+    $this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
 
 	$this->form_validation->set_rules('id', 'id', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -225,6 +231,8 @@ class Stok extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Modal");
 	xlsWriteLabel($tablehead, $kolomhead++, "Jual");
 	xlsWriteLabel($tablehead, $kolomhead++, "Dibuat");
+    xlsWriteLabel($tablehead, $kolomhead++, "Jenis");
+
 
 	foreach ($this->Stok_model->get_all() as $data) {
             $kolombody = 0;
@@ -238,6 +246,7 @@ class Stok extends CI_Controller
 	    xlsWriteNumber($tablebody, $kolombody++, $data->modal);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->jual);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->dibuat);
+        xlsWriteLabel($tablebody, $kolombody++, $data->jenis);
 
 	    $tablebody++;
             $nourut++;

@@ -7,6 +7,7 @@
             	    <tr><td>Modal</td><td><?php echo $modal; ?></td></tr>
             	    <tr><td>Jual</td><td><?php echo $jual; ?></td></tr>
             	    <tr><td>Dibuat</td><td><?php echo $dibuat; ?></td></tr>
+                    <tr><td>Jenis</td><td><?php echo $jenis; ?></td></tr>
             	    <tr><td></td><td><a href="<?php echo site_url('stok') ?>" class="btn btn-default">Kembali</a></td></tr>
             	   </table>
     

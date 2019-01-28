@@ -38,7 +38,7 @@
                     </div>
         	    <div class="form-group">
                     <label for="int">Modal <?php echo form_error('modal') ?></label>
-                    <input type="text" class="form-control" name="modal" id="modal" placeholder="Modal" value="<?php echo $modal; ?>" />
+                    <input type="text" class="form-control" name="modal" id="modal" placeholder="Harga modal produ kyang diretur" value="<?php echo $modal; ?>" />
                 </div>
         	    <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
         	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 

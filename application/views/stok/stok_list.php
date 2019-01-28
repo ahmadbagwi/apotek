@@ -40,6 +40,7 @@
                                     <th>Harga Modal</th>
                                     <th>Harga Jual</th>
                                     <th>Dibuat</th>
+                                    <th>Jenis</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                 <td><?php echo $stok->modal ?></td>
                                 <td><?php echo $stok->jual ?></td>
                                 <td><?php echo $stok->dibuat ?></td>
+                                <td><?php echo $stok->jenis ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php 
                                     echo anchor(site_url('stok/read/'.$stok->id),'Read'); 

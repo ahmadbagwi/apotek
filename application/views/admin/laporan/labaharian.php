@@ -4,8 +4,8 @@
     						<input type="submit" name="cari" value="Cari"><br>
     						<?php form_close();?>
                             Menampilkan data <?php echo $tanggal;?>
-                            <legend>Transaksi Sukses</legend>
-                            <table class="table table-striped" style="font-size: 12px">
+                            <h3>Transaksi Sukses</h3>
+                            <table class="table table-striped" border="0" cellpadding="0" style="font-size: 12px">
                                      <tr>
                                          <th>Kasir</th>
                                          <th>Kode</th>
@@ -32,15 +32,16 @@
                             </table>
 
                             <?php
-                            echo "<br><legend>Transaksi Dibatalkan</legend>";
+                            echo "<br><h3>Transaksi Dibatalkan</h3>";
                             $this->table->set_heading('Kasir', 'Kode', 'Produk', 'Jumlah', 'Nilai');
                             $template = array (
-                                        'table_open' => '<table border="0" style="width: 100%;font-size:12px;" class="table table-striped">',
+                                        'table_open' => '<table border="0" cellpadding="0" style="width: 100%;font-size:12px;" class="table table-striped">',
                                         );
                             $this->table->set_template($template);
                             echo $this->table->generate($dataPembatalan);
                             ?>
-                            <a href="<?php echo site_url('Laporan/cetakHarian') ?>" target="_blank" class="btn btn-success">Cetak/PDF</a>
+                            
+                            <a href="<?php echo site_url('Laporan/cetakHarian?tanggal='."$tanggal".'') ?>" target="_blank" class="btn btn-success">Cetak/PDF</a>
                             <script>
     		            	$(document).ready(function (){
     		            		

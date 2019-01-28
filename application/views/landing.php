@@ -17,7 +17,8 @@
   <div id="fullscreen_bg" class="fullscreen_bg"/>
     <div class="container">
       <?php echo form_open('User/login', 'class=form-signin'); ?>
-      <h3 class="form-signin-heading text-muted">Sistem Penjualan Apotek Budi Farma</h3>
+      <h3 class="form-signin-heading text-muted"><img src="http://103.56.207.85/~apotek/assets/images/logo-apotek-budi-farma-1-transparan-200.png" width="85px"><br>
+      Sistem Penjualan Apotek Budi Farma</h3>
       <input type="text" class="form-control" id="username" name="username" placeholder="username" required="" autofocus="">
       <input type="password" class="form-control" id="password" name="password" placeholder="password" required="">
       <button class="btn btn-lg btn-primary btn-block" type="submit">

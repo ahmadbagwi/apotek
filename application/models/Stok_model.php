@@ -39,6 +39,7 @@ class Stok_model extends CI_Model
 	$this->db->or_like('modal', $q);
 	$this->db->or_like('jual', $q);
 	$this->db->or_like('dibuat', $q);
+    $this->db->or_like('jenis', $q);
 	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -54,6 +55,7 @@ class Stok_model extends CI_Model
 	$this->db->or_like('modal', $q);
 	$this->db->or_like('jual', $q);
 	$this->db->or_like('dibuat', $q);
+    $this->db->or_like('jenis', $q);
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

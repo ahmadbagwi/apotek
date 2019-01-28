@@ -51,7 +51,7 @@
             <a class="dropdown-item <?php if($title=='Laporan Transaksi Bulanan'){echo 'active';}?>" href="<?php echo site_url('laporan/labaBulanan') ?>">Laporan Bulanan</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Konsinyasi:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Laporan Konsinyasi</a>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="<?php echo site_url('laporan/konsinyasi') ?>">Laporan Konsinyasi</a>
             
           </div>
         </li>
@@ -67,7 +67,7 @@
             <a class="dropdown-item <?php if($title=='Buat Akun'){echo 'active';}?>" href="<?php echo site_url('user/register') ?>">Buat Akun</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Aplikasi:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Pengaturan Aplikasi</a>
+            <a class="dropdown-item <?php if($title=='Pengaturan Aplikasi'){echo 'active';}?>" href="<?php echo site_url('pengaturan') ?>">Pengaturan Aplikasi</a>
           </div>
         </li>
       </ul>

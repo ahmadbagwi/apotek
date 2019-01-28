@@ -28,6 +28,10 @@
                                 <label for="timestamp">Dibuat <?php echo form_error('dibuat') ?></label>
                                 <input type="text" class="form-control" name="dibuat" id="dibuat" placeholder="Dibuat" value="<?php echo date('Y-m-d H:i:j') ?>" />
                             </div>
+                            <div class="form-group">
+                                <label for="int">Jenis <?php echo form_error('jenis') ?></label>
+                                <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Isi 'konsinyasi' jika merupakan barang konsinyasi, atau isi 'umum'" value="<?php echo $jenis; ?>" />
+                            </div>
                     	    <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
                     	    <button type="submit" class="btn btn-primary"><?php echo "Buat Produk" ?></button> 
                     	    <a href="<?php echo site_url('stok') ?>" class="btn btn-default">Kembali</a>
