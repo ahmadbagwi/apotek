@@ -60,6 +60,7 @@ class Stokmasuk extends CI_Controller
 		'tanggal' => $row->tanggal,
 		'jumlah' => $row->jumlah,
 		'modal' => $row->modal,
+        'jual' => $row->jual,
 	    );
             $data['title'] = "Detail Transaksi Stok Masuk";
             $this->load->view('admin/header', $data);
@@ -67,7 +68,7 @@ class Stokmasuk extends CI_Controller
             $this->load->view('stokmasuk/stokMasuk_read', $data);
             $this->load->view('admin/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('stokmasuk'));
         }
     }
@@ -85,6 +86,7 @@ class Stokmasuk extends CI_Controller
 	    'tanggal' => set_value('tanggal'),
 	    'jumlah' => set_value('jumlah'),
 	    'modal' => set_value('modal'),
+        'jual' => set_value('jual'),
 	);
         $data['title'] = "Buat Transaksi Stok Masuk";
         $this->load->view('admin/header', $data);
@@ -108,17 +110,19 @@ class Stokmasuk extends CI_Controller
 		'tanggal' => $this->input->post('tanggal',TRUE),
 		'jumlah' => $this->input->post('jumlah',TRUE),
 		'modal' => $this->input->post('modal',TRUE),
+        'jual' => $this->input->post('jual',TRUE),
 
 	    );
     
         $id = $this->input->post('idProduk');
         $stok = $this->input->post('stokAkhir');
         $modal = $this->input->post('modal');
+        $jual = $this->input->post('jual');
         
 
             $this->StokmasukModel->insert($data);
-            $this->StokmasukModel->updateStok($id, $stok, $modal);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->StokmasukModel->updateStok($id, $stok, $modal, $jual);
+            $this->session->set_flashdata('message', 'Sukses menyimpan data');
             redirect(site_url('stokmasuk'));
         }
     }
@@ -139,6 +143,7 @@ class Stokmasuk extends CI_Controller
 		'tanggal' => set_value('tanggal', $row->tanggal),
 		'jumlah' => set_value('jumlah', $row->jumlah),
 		'modal' => set_value('modal', $row->modal),
+        'jual' => set_value('modal', $row->jual),
 	    );
             $data['title'] = "Update Transaksi Stok Masuk";
             $this->load->view('admin/header', $data);
@@ -146,7 +151,7 @@ class Stokmasuk extends CI_Controller
             $this->load->view('stokmasuk/stokMasuk_form', $data);
             $this->load->view('admin/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('stokmasuk'));
         }
     }
@@ -166,10 +171,11 @@ class Stokmasuk extends CI_Controller
 		'tanggal' => $this->input->post('tanggal',TRUE),
 		'jumlah' => $this->input->post('jumlah',TRUE),
 		'modal' => $this->input->post('modal',TRUE),
+        'jual' => $this->input->post('jual',TRUE),
 	    );
 
             $this->StokmasukModel->update($this->input->post('id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Sukses mengubah data');
             redirect(site_url('stokmasuk'));
         }
     }
@@ -180,10 +186,10 @@ class Stokmasuk extends CI_Controller
 
         if ($row) {
             $this->StokmasukModel->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', 'sukses menghapus data');
             redirect(site_url('stokmasuk'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('stokmasuk'));
         }
     }
@@ -197,6 +203,7 @@ class Stokmasuk extends CI_Controller
 	$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
 	$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
 	$this->form_validation->set_rules('modal', 'modal', 'trim|required');
+    $this->form_validation->set_rules('jual', 'jual', 'trim|required');
 
 	$this->form_validation->set_rules('id', 'id', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -231,6 +238,7 @@ class Stokmasuk extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Tanggal");
 	xlsWriteLabel($tablehead, $kolomhead++, "Jumlah");
 	xlsWriteLabel($tablehead, $kolomhead++, "Modal");
+    xlsWriteLabel($tablehead, $kolomhead++, "Jual");
 
 	foreach ($this->StokmasukModel->get_all() as $data) {
             $kolombody = 0;
@@ -244,6 +252,7 @@ class Stokmasuk extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->tanggal);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->jumlah);
 	    xlsWriteNumber($tablebody, $kolombody++, $data->modal);
+        xlsWriteNumber($tablebody, $kolombody++, $data->jual);
 
 	    $tablebody++;
             $nourut++;

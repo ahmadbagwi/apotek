@@ -1,7 +1,7 @@
-                    <legend>Daftar Produk</legend>
+                    <h2>Daftar Produk</h2>
                     <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-4">
-                                <?php echo anchor(site_url('stok/create'),'Baru', 'class="btn btn-primary"'); ?>
+                                <?php echo anchor(site_url('stok/create'),'Tambah Produk', 'class="btn btn-primary"'); ?>
                             </div>
                             <div class="col-md-4 text-center">
                                 <div style="margin-top: 8px" id="message">
@@ -23,7 +23,7 @@
                                                 <?php
                                             }
                                         ?>
-                                      <button class="btn btn-primary" type="submit">Search</button>
+                                      <button class="btn btn-primary" type="submit">Cari</button>
                                     </span>
                                 </div>
                             </form>
@@ -36,9 +36,9 @@
                                     <th>Nama Produk</th>
                                     <th>Kategori</th>
                                     <th>Deskripsi</th>
-                                    <th>Jumlah Stok</th>
-                                    <th>Harga Modal</th>
-                                    <th>Harga Jual</th>
+                                    <th>Jumlah stok</th>
+                                    <th>Harga modal</th>
+                                    <th>Harga jual</th>
                                     <th>Dibuat</th>
                                     <th>Jenis</th>
                                     <th>Aksi</th>
@@ -55,17 +55,17 @@
                                 <td><?php echo $stok->kategori ?></td>
                                 <td><?php echo $stok->deskripsi ?></td>
                                 <td><?php echo $stok->stok ?></td>
-                                <td><?php echo $stok->modal ?></td>
-                                <td><?php echo $stok->jual ?></td>
+                                <td><?php echo number_format($stok->modal) ?></td>
+                                <td><?php echo number_format($stok->jual) ?></td>
                                 <td><?php echo $stok->dibuat ?></td>
                                 <td><?php echo $stok->jenis ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php 
-                                    echo anchor(site_url('stok/read/'.$stok->id),'Read'); 
+                                    echo anchor(site_url('stok/read/'.$stok->id),'Detail'); 
                                     echo ' | '; 
-                                    echo anchor(site_url('stok/update/'.$stok->id),'Update'); 
+                                    echo anchor(site_url('stok/update/'.$stok->id),'Ubah'); 
                                     echo ' | '; 
-                                    echo anchor(site_url('stok/delete/'.$stok->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                                    echo anchor(site_url('stok/delete/'.$stok->id),'Hapus','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                                     ?>
                                 </td>
                             </tr>
@@ -77,8 +77,8 @@
                                 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-primary">Total Produk : <?php echo $total_rows ?></a>
-                    		<?php echo anchor(site_url('stok/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+                                    <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
+                    		<?php echo anchor(site_url('stok/excel'), 'Export ke Excel', 'class="btn btn-primary"'); ?>
                     	       </div>
                                 <div class="col-md-6 text-right">
                                     <?php echo $pagination ?>

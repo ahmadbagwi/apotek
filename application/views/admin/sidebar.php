@@ -19,6 +19,7 @@
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Data Transaksi:</h6>
             <a class="dropdown-item <?php if($title=='Riwayat Transaksi'){echo 'active';}?>" href="<?php echo site_url('laporan/detailHarian') ?>">Riwayat Transaksi</a>
+            <a class="dropdown-item <?php if($title=='Cetak Nota'){echo 'active';}?>" href="<?php echo site_url('Nota') ?>">Cetak Nota</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -50,9 +51,20 @@
             <a class="dropdown-item <?php if($title=='Laporan Transaksi Harian'){echo 'active';}?>" href="<?php echo site_url('laporan/labaHarian') ?>">Laporan Harian</a>
             <a class="dropdown-item <?php if($title=='Laporan Transaksi Bulanan'){echo 'active';}?>" href="<?php echo site_url('laporan/labaBulanan') ?>">Laporan Bulanan</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Konsinyasi:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="<?php echo site_url('laporan/konsinyasi') ?>">Laporan Konsinyasi</a>
+            <h6 class="dropdown-header">Batal:</h6>
+            <a class="dropdown-item <?php if($title=='Transaksi Batal'){echo 'active';}?>" href="<?php echo site_url('laporan/transaksiBatal') ?>">Transaksi Batal</a>
             
+          </div>
+        </li>
+
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fas fa-file-archive"></i>
+            <span>Aset</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Aset:</h6>
+            <a class="dropdown-item <?php if($title=='Data Aset'){echo 'active';}?>" href="<?php echo site_url('aset') ?>">Daftar Data Aset</a>
           </div>
         </li>
       

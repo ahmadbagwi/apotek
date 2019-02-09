@@ -8,6 +8,7 @@ Class PenjualanModel extends CI_Model {
     }
 
     public function cariProduk($nama){
+        $this->db->where('stok >', '0');
         $this->db->like('nama', $nama , 'both');
         $this->db->order_by('nama', 'ASC');
         $this->db->limit(10);

@@ -1,4 +1,4 @@
-        <h2 style="margin-top:0px">Daftar Retur</h2>
+        <h2>Daftar Retur</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('retur/create'),'Retur Produk', 'class="btn btn-primary"'); ?>
@@ -23,7 +23,7 @@
                                     <?php
                                 }
                             ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
                     </div>
                 </form>
@@ -32,14 +32,14 @@
         <table class="table table-bordered" style="margin-bottom: 10px; font-size:12px;">
             <tr>
                 <th>No</th>
-		<th>IdUser</th>
-		<th>IdSuplier</th>
-		<th>NamaProduk</th>
-		<th>IdProduk</th>
+		<th>Id user</th>
+		<th>Id suplier</th>
+		<th>Nama produk</th>
+		<th>Id produk</th>
 		<th>Tanggal</th>
 		<th>Jumlah</th>
 		<th>Modal</th>
-		<th>Action</th>
+		<th>Aksi</th>
             </tr><?php
             foreach ($retur_data as $retur)
             {
@@ -55,11 +55,11 @@
 			<td><?php echo $retur->modal ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
-				echo anchor(site_url('retur/read/'.$retur->id),'Read'); 
+				echo anchor(site_url('retur/read/'.$retur->id),'Detail'); 
 				echo ' | '; 
-				echo anchor(site_url('retur/update/'.$retur->id),'Update'); 
+				echo anchor(site_url('retur/update/'.$retur->id),'Ubah'); 
 				echo ' | '; 
-				echo anchor(site_url('retur/delete/'.$retur->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+				echo anchor(site_url('retur/delete/'.$retur->id),'Hapus','onclick="javasciprt: return confirm(\'Yakin hapus data?\')"'); 
 				?>
 			</td>
 		</tr>
@@ -69,8 +69,8 @@
         </table>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-		<?php echo anchor(site_url('retur/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
+		<?php echo anchor(site_url('retur/excel'), 'Export ke Excel', 'class="btn btn-primary"'); ?>
 	    </div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>

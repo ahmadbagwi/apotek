@@ -15,6 +15,7 @@
                                     <th>Banyaknya</th>
                                     <th style="display: none">Stok Akhir</th>
                                     <th style="display: none">Total Modal</th>
+                                    <th>Diskon (%)</th>
                                     <th>Sub total</th>
 								</tr>
 							</thead>
@@ -29,6 +30,7 @@
                                     <td><input type="text" name="jumlah[]" class="jumlah form-control input-sm"></td>
                                     <td style="display: none"><input type="text" name="stokAkhir[]" class="stokAkhir form-control input-sm"></td>
                                     <td style="display: none"><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>
+                                    <td><input type="text" name="diskon[]" class="diskon form-control input-sm" value="0"></td>
                                     <td><input type="text" name="total[]" class="total form-control input-sm" readonly></td>
                                 </tr>
                             </tbody>
@@ -46,7 +48,7 @@
                         <input class="btn btn-primary pull-left" type="submit" value="PROSES" name="submit" onclick="return confirm('Proses transaksi?')">
                     </div>
                 <?php echo form_close();?>
-
+                <div id="info" class="info"></div>
 			    <script type="text/javascript">
 			    $(document).on("focus", ".table", function(){    
 			    $('[name="nama[]"]').each(function(i,e){   
@@ -54,7 +56,7 @@
 			            source: function (request, response) {
 			                $.get("<?php echo base_url('Penjualan/get_autocomplete/?');?>", request,function(data){
 			                    jsonData = JSON.parse(data);
-			                    console.log(jsonData);
+			                    //console.log(jsonData);
 			                    response($.map(jsonData, function (value, key) {
 			                        return {
 			                            label: value.name,
@@ -92,6 +94,7 @@
 			                '<td><input type="text" name="jumlah[]" class="jumlah form-control input-sm"></td>'+
 			                '<td style="display: none"><input type="text" name="stokAkhir[]" class="stokAkhir form-control input-sm"></td>'+
 			                '<td style="display: none"><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>'+
+			                '<td><input type="text" name="diskon[]" class="diskon form-control input-sm"></td>'+
 			                '<td><input type="text" name="total[]" class="total form-control input-sm" readonly></td>'+
 			    			'</tr>';
 			    			$("#table-details").append($html);
@@ -109,32 +112,43 @@
 			    		});
 			    	});
 			    </script>
-			    <!--cari stok awal, kurangi dengan jumlah beli, simpan di stok akhir, update stok item belanja ke database dengna update_batch-->
+			    <!--cari stok awal, kurangi dengan jumlah beli, simpan di stok akhir, update stok item belanja ke database dengan update_batch-->
 			    <script type="text/javascript">
 			       $(document).ready(function(){
 			          $(document).on("focus", ".table", function(){
 			              $(".jumlah").blur(function(){
 			                var stokAwal = $(this).parent().parent().find(".stokAwal");
 			                var quantity = $(this).parent().parent().find(".jumlah");
-			                if (stokAwal.val() !== "" && quantity.val() !== "")
-			                  {
+			                if (stokAwal.val() !== "" && quantity.val() !== "") {
 			                    $(this).parent().parent().find(".stokAkhir").val(parseInt(stokAwal.val())-parseInt(quantity.val()));
 			                }
+			                //if (stokAwal.val() < quantity.val()) {
+			                    //alert('Jumlah stok tidak cukup, tersisa ' + stokAwal.val());
+			                //}
+			                //console.log(quantity.val());
+			                //console.log(stokAwal.val());
 			                })
 			            })
 			        });
 			    </script>
+			    <!--Tampilkan notifikasi jika stok kurang-->
+
 			    <!--Mencari total modal dan total belanja-->
 			    <script type="text/javascript">
 			        $(document).ready(function(){
 			          $(document).on("focus", ".table", function(){
-			          $(".jumlah").blur(function(){
+			          $(".diskon").blur(function(){
 			            var hargaModalObj = $(this).parent().parent().find(".hargaModal");
 			            var priceObj = $(this).parent().parent().find(".jual");
 			            var quantityObj = $(this).parent().parent().find(".jumlah");
+			            var nilaiDiskon = $(this).parent().parent().find(".diskon");
+			            var diskon = parseInt(priceObj.val()) * parseInt(nilaiDiskon.val()) / 100 * parseInt(quantityObj.val());
+			            //console.log(diskon);
 			            if (priceObj.val() !== "" && quantityObj.val() !== "")
 			              {
-			                $(this).parent().parent().find(".total").val(parseInt(priceObj.val()) * parseInt(quantityObj.val()));
+			                $(this).parent().parent().find(".total").val(parseInt(priceObj.val()) * parseInt(quantityObj.val()) - diskon);
+			         
+			                //$(this).parent().parent().find(".total").val(jumlahAhir);
 			                $(this).parent().parent().find(".totalModal").val(parseInt(hargaModalObj.val()) * parseInt(quantityObj.val())); 
 			              }
 			            // mencari grand total;
@@ -144,6 +158,7 @@
 			                total += parseInt(e.value);
 			            });
 			            $(".grand-total").val(total);
+
 			            // mencari total modal
 			            var total_modal = 0;
 			            $(".totalModal").each(function(i,e){
@@ -156,6 +171,22 @@
 			          });
 			        });
 			    </script>
+			    <!--mencari harga diskon-->
+			    <script type="text/javascript">
+			    	$(document).on("focus", ".table", function(){   
+						var diskon = $( '[name="diskon[]"]' ).val();
+			    		//console.log(diskon);
+			    		$( '[name="diskon[]"]' ).each(function(i,e){
+			    			//document.write("urutan"+i+"isinya"+e+"<br>");
+			    			//console.log('urutan '+i+' isinya'+e);
+			    			//console.log(".diskon");
+			    		})
+			    	});
+			    	//$( '[name="diskon[]"]' ).each(function( index ) {
+						  //console.log( index + ": " + $( this ).text() );
+						//});
+			    </script>
+
 			    <!--Mencari uang kembali-->
 			    <script type="text/javascript">
 			        $(document).ready(function(){

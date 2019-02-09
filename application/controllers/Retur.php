@@ -62,12 +62,12 @@ class Retur extends CI_Controller
 		'modal' => $row->modal,
 	    );
             $data['title'] = "Detail Retur Produk";
-            $this->load->veiw('admin/header', $data);
-            $this->load->veiw('admin/sidebar');
+            $this->load->view('admin/header');
+            $this->load->view('admin/sidebar');
             $this->load->view('retur/retur_read', $data);
-            $this->load->veiw('admin/footer');
+            $this->load->view('admin/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('retur'));
         }
     }
@@ -113,7 +113,7 @@ class Retur extends CI_Controller
             $jumlah = $this->input->post('jumlah',TRUE);
             $this->ReturModel->insert($data);
             $this->ReturModel->updateStok($idProduk, $jumlah);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('message', 'Sukses retur produk');
             redirect(site_url('retur'));
         }
     }
@@ -141,7 +141,7 @@ class Retur extends CI_Controller
             $this->load->view('retur/retur_form', $data);
             $this->load->view('admin/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('retur'));
         }
     }
@@ -164,7 +164,7 @@ class Retur extends CI_Controller
 	    );
 
             $this->ReturModel->update($this->input->post('id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Sukses ubah data');
             redirect(site_url('retur'));
         }
     }
@@ -175,10 +175,10 @@ class Retur extends CI_Controller
 
         if ($row) {
             $this->ReturModel->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', 'Sukses hapus data');
             redirect(site_url('retur'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('retur'));
         }
     }

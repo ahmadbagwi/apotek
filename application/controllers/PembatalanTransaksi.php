@@ -58,7 +58,8 @@ Class PembatalanTransaksi extends CI_Controller {
         $this->PembatalantransaksiModel->buatPembatalan($data);
         $this->PembatalantransaksiModel->updateStok($idProduk, $jumlah);
         $this->PembatalantransaksiModel->ubahStatus($kode, $idProduk);
-        //$this->PembatalantransaksiModel->kurangiProfit($kode, $jumlah);
+        $this->PembatalantransaksiModel->ubahStatusPembayaran($kode);
+        $this->PembatalantransaksiModel->kurangiProfit($kode, $jumlah);
         redirect('PembatalanTransaksi/');
         //$data['title'] = "Pembatalan Transaksi";
         //$this->load->view('admin/header', $data);
@@ -68,6 +69,11 @@ Class PembatalanTransaksi extends CI_Controller {
     }
 
     function daftarPembatalan() {
-        
+        $tanggal = $this->input->get('tanggalCari');
+        if ($tanggal==null) {
+            $tanggal = date('Y-m-d');
+        }
+        $data['tanggal'] = $tanggal;
+        $data['dataPembatalan'] = $this->PembatalantransaksiModel->daftarPembatalan($tanggal);
     }
 }

@@ -43,7 +43,7 @@ class User_model extends CI_Model {
 			'full_name'  => $full_name,
 			'phone'      => $phone,
 			'address'    => $address,
-			'avatar'	 => $foto,
+			//'avatar'	 => $foto,
 
 		);
 		

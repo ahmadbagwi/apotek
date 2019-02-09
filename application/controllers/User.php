@@ -50,7 +50,7 @@ class User extends CI_Controller {
 		
 		// create the data object
 		$data = new stdClass();
-		
+		$dataz['title'] = "Pembuatan akun baru";
 		// load form helper and validation library
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -70,7 +70,7 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() === false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('admin/header');
+			$this->load->view('admin/header', $dataz);
 			$this->load->view('admin/sidebar');
 			$this->load->view('user/register/register', $data);
 			$this->load->view('admin/footer');
@@ -98,7 +98,7 @@ class User extends CI_Controller {
 			if ($this->user_model->create_user($username, $email, $password, $full_name, $phone, $address)) {
 
 				// user creation ok
-				$this->load->view('admin/header');
+				$this->load->view('admin/header', $dataz);
 				$this->load->view('admin/sidebar');
 				$this->load->view('user/register/register_success', $data);
 				$this->load->view('admin/footer');
@@ -109,7 +109,7 @@ class User extends CI_Controller {
 				$data->error = 'Terjadi kesalahan saat pembuatan akun, silahkan coba lagi.';
 				
 				// send error to the view
-				$this->load->view('admin/header');
+				$this->load->view('admin/header', $dataz);
 				$this->load->view('admin/sidebar');
 				$this->load->view('user/register/register', $data);
 				$this->load->view('admin/footer');
@@ -142,7 +142,10 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('home');
+			$this->load->model('PengaturanModel');
+			$dataz['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
+			$dataz['logo'] = $this->PengaturanModel->logo();
+			$this->load->view('landing', $dataz);
 			//$this->load->view('user/login/login');
 			//$this->load->view('footer');
 			
@@ -167,6 +170,8 @@ class User extends CI_Controller {
 				// user login ok
 				$id = $_SESSION['user_id']; 
 				$this->user_model->checkin($id);
+				$this->load->model('PengaturanModel');
+				$dataz['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
 				$tanggal = date('Y-m-d');
 				$dataz['jumlahProduk'] = $this->DashboardModel->jumlahProduk();
 				$dataz['jumlahTransaksi'] = $this->DashboardModel->jumlahTransaksi();
@@ -183,9 +188,10 @@ class User extends CI_Controller {
 				$data->error = 'Wrong username or password.';
 				
 				// send error to the view
-				$this->load->view('landing');
-				//$this->load->view('user/login/login', $data);
-				//$this->load->view('footer');
+				$this->load->model('PengaturanModel');
+				$dataz['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
+				$dataz['logo'] = $this->PengaturanModel->logo();
+				$this->load->view('landing', $dataz);
 				
 			}
 			
@@ -212,7 +218,10 @@ class User extends CI_Controller {
 			}
 			
 			// user logout ok
-			$this->load->view('landing');
+			$this->load->model('PengaturanModel');
+			$dataz['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
+			$dataz['logo'] = $this->PengaturanModel->logo();
+			$this->load->view('landing', $dataz);
 			
 		} else {
 			

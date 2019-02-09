@@ -64,7 +64,7 @@ class Supplier extends CI_Controller
             $this->load->view('supplier/supplier_read', $data);
             $this->load->view('admin/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('supplier'));
         }
     }
@@ -102,7 +102,7 @@ class Supplier extends CI_Controller
 	    );
 
             $this->SupplierModel->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('message', 'Sukses menimpan data');
             redirect(site_url('supplier'));
         }
     }
@@ -123,7 +123,7 @@ class Supplier extends CI_Controller
 	    );
             $this->load->view('supplier/supplier_form', $data);
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('supplier'));
         }
     }
@@ -143,7 +143,7 @@ class Supplier extends CI_Controller
 	    );
 
             $this->SupplierModel->update($this->input->post('id', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', 'Sukses mengubah data');
             redirect(site_url('supplier'));
         }
     }
@@ -154,10 +154,10 @@ class Supplier extends CI_Controller
 
         if ($row) {
             $this->SupplierModel->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', 'Sukses menghapus data');
             redirect(site_url('supplier'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', 'Data tidak ditemukan');
             redirect(site_url('supplier'));
         }
     }

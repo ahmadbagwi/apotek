@@ -32,14 +32,15 @@ class StokmasukModel extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);
-	$this->db->or_like('idUser', $q);
-	$this->db->or_like('idSuplier', $q);
-	$this->db->or_like('namaProduk', $q);
-	$this->db->or_like('idProduk', $q);
-	$this->db->or_like('tanggal', $q);
-	$this->db->or_like('jumlah', $q);
-	$this->db->or_like('modal', $q);
-	$this->db->from($this->table);
+    	$this->db->or_like('idUser', $q);
+    	$this->db->or_like('idSuplier', $q);
+    	$this->db->or_like('namaProduk', $q);
+    	$this->db->or_like('idProduk', $q);
+    	$this->db->or_like('tanggal', $q);
+    	$this->db->or_like('jumlah', $q);
+    	$this->db->or_like('modal', $q);
+        $this->db->or_like('jual', $q);
+    	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -47,14 +48,15 @@ class StokmasukModel extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id', $q);
-	$this->db->or_like('idUser', $q);
-	$this->db->or_like('idSuplier', $q);
-	$this->db->or_like('namaProduk', $q);
-	$this->db->or_like('idProduk', $q);
-	$this->db->or_like('tanggal', $q);
-	$this->db->or_like('jumlah', $q);
-	$this->db->or_like('modal', $q);
-	$this->db->limit($limit, $start);
+    	$this->db->or_like('idUser', $q);
+    	$this->db->or_like('idSuplier', $q);
+    	$this->db->or_like('namaProduk', $q);
+    	$this->db->or_like('idProduk', $q);
+    	$this->db->or_like('tanggal', $q);
+    	$this->db->or_like('jumlah', $q);
+    	$this->db->or_like('modal', $q);
+        $this->db->or_like('jual', $q);
+    	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
@@ -64,9 +66,10 @@ class StokmasukModel extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
-    function updateStok($id, $stok, $modal) {
+    function updateStok($id, $stok, $modal, $jual) {
         $this->db->set('stok', $stok, FALSE);
         $this->db->set('modal', $modal, FALSE);
+        $this->db->set('jual', $jual, FALSE);
         $this->db->where('id', $id);
         $this->db->update('stok');
     }

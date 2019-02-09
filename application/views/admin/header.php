@@ -46,24 +46,16 @@ if ($_SESSION['user_id']==null) {
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="<?php echo base_url('dashboard'); ?>"><img src="<?php echo base_url('assets/images/logo-apotek-budi-farma-1-putih-200.png') ?>" height="55px" width="auto"><?php echo " ".$_SESSION['username']; ?></a>
+      <a class="navbar-brand mr-1" href="<?php echo base_url('dashboard'); ?>"><img src="<?php echo base_url('assets/images/')."6cfa16cb13331e34aa6efbe2b5b48655.png";?>" height="55px" width="auto"><?php echo " ".$_SESSION['username']; ?></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
-
-       <!-- Navbar Search -->
-      <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <!--<div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>-->
+      <div class="col-md-9">
+        <a href="<?php echo base_url('penjualan'); ?>"><i class="fas fa-cart-plus fa-2x"></i></a>&emsp; 
+        <a href="<?php echo base_url('PembatalanTransaksi'); ?>"><i class="fas fa-history fa-2x"></i><a>&emsp;
+        <a href="<?php echo base_url('laporan/detailHarian'); ?>"><i class="fas fa-list-ol fa-2x"></i><a>
       </div>
-
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">

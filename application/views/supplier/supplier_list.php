@@ -1,4 +1,4 @@
-                    <h2 style="margin-top:0px">Daftar Supplier</h2>
+                    <h2>Daftar Supplier</h2>
                     <div class="row" style="margin-bottom: 10px">
                         <div class="col-md-4">
                             <?php echo anchor(site_url('supplier/create'),'Baru', 'class="btn btn-primary"'); ?>
@@ -23,7 +23,7 @@
                                                 <?php
                                             }
                                         ?>
-                                      <button class="btn btn-primary" type="submit">Search</button>
+                                      <button class="btn btn-primary" type="submit">Cari</button>
                                     </span>
                                 </div>
                             </form>
@@ -32,11 +32,11 @@
                     <table class="table table-bordered" style="margin-bottom: 10px; font-size: 12px">
                         <tr>
                             <th>No</th>
-            		<th>Nama</th>
-            		<th>Alamat</th>
-            		<th>Hp</th>
-            		<th>Jenis</th>
-            		<th>Action</th>
+                    		<th>Nama</th>
+                    		<th>Alamat</th>
+                    		<th>Hp</th>
+                    		<th>Jenis</th>
+                    		<th>Aksi</th>
                         </tr><?php
                         foreach ($supplier_data as $supplier)
                         {
@@ -49,11 +49,11 @@
             			<td><?php echo $supplier->jenis ?></td>
             			<td style="text-align:center" width="200px">
             				<?php 
-            				echo anchor(site_url('supplier/read/'.$supplier->id),'Read'); 
+            				echo anchor(site_url('supplier/read/'.$supplier->id),'Detail'); 
             				echo ' | '; 
-            				echo anchor(site_url('supplier/update/'.$supplier->id),'Update'); 
+            				echo anchor(site_url('supplier/update/'.$supplier->id),'Ubah'); 
             				echo ' | '; 
-            				echo anchor(site_url('supplier/delete/'.$supplier->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+            				echo anchor(site_url('supplier/delete/'.$supplier->id),'Hapus','onclick="javasciprt: return confirm(\'Yakin hapus data ?\')"'); 
             				?>
             			</td>
             		      </tr>
@@ -63,7 +63,7 @@
                     </table>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+                            <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
             	    </div>
                         <div class="col-md-6 text-right">
                             <?php echo $pagination ?>

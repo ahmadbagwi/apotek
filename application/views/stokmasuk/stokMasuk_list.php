@@ -1,4 +1,4 @@
-                    <legend>Daftar Transaksi Stok Masuk<legend>
+                    <h2>Daftar Stok Masuk<h2>
                     <div class="row" style="margin-bottom: 10px">
                         <div class="col-md-4">
                             <?php echo anchor(site_url('stokmasuk/create'),'Baru', 'class="btn btn-primary"'); ?>
@@ -38,7 +38,8 @@
             		<th>Id Produk</th>
             		<th>Tanggal</th>
             		<th>Jumlah</th>
-            		<th>Modal</th>
+            		<th>Harga Modal</th>
+                    <th>Harga Jual</th>
             		<th>Aksi</th>
                         </tr><?php
                         foreach ($stokmasuk_data as $stokmasuk)
@@ -53,6 +54,7 @@
             			<td><?php echo $stokmasuk->tanggal ?></td>
             			<td><?php echo $stokmasuk->jumlah ?></td>
             			<td><?php echo $stokmasuk->modal ?></td>
+                        <td><?php echo $stokmasuk->jual ?></td>
             			<td style="text-align:center" width="200px">
             				<?php 
             				echo anchor(site_url('stokmasuk/read/'.$stokmasuk->id),'Read'); 
@@ -69,8 +71,8 @@
                     </table>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-            		<?php echo anchor(site_url('stokmasuk/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+                            <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
+            		<?php echo anchor(site_url('stokmasuk/excel'), 'Export ke Excel', 'class="btn btn-primary"'); ?>
             	    </div>
                         <div class="col-md-6 text-right">
                             <?php echo $pagination ?>
