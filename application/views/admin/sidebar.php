@@ -24,6 +24,19 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="far fa-clock"></i>
+            <span>Tutup Kasir</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header" >Tutup Kasir:</h6>
+            <a class="dropdown-item <?php if($title=='Tutup Kasir'){echo 'active';}?>" href="<?php echo site_url('TutupKas') ?>">Tutup Kasir</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Data dan Cetak:</h6>
+            <a class="dropdown-item <?php if($title=='Riwayat Transaksi'){echo 'active';}?>" href="<?php echo site_url('TutupKas/datakas') ?>">Data Tutup Kasir</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fas fa-fw fa-table"></i>
             <span>Data Master</span>
           </a>

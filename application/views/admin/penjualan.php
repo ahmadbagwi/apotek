@@ -3,7 +3,7 @@
                        <label>Jenis</label><input type="text" name="jenis"  class="type form-control input-sm" value="umum">
                        <label>Pelanggan</label><input type="text" name="pelanggan" class="customer form-control input-sm" value="umum">
                        <input type="hidden" id="idUser" name="idUser" class="form-control input-sm" value="<?php echo $_SESSION['user_id'];?>">
-					   <table style="width: 100%" class="table">
+					   <table style="width: 100%" class="table table-responsive">
 							<thead>
 								<tr>
 									<th>No</th>
@@ -94,7 +94,7 @@
 			                '<td><input type="text" name="jumlah[]" class="jumlah form-control input-sm"></td>'+
 			                '<td style="display: none"><input type="text" name="stokAkhir[]" class="stokAkhir form-control input-sm"></td>'+
 			                '<td style="display: none"><input type="text" name="totalModal[]" class="totalModal form-control input-sm" readonly></td>'+
-			                '<td><input type="text" name="diskon[]" class="diskon form-control input-sm"></td>'+
+			                '<td><input type="text" name="diskon[]" class="diskon form-control input-sm" value="0"></td>'+
 			                '<td><input type="text" name="total[]" class="total form-control input-sm" readonly></td>'+
 			    			'</tr>';
 			    			$("#table-details").append($html);

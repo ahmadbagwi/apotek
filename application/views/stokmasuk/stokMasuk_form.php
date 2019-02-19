@@ -54,7 +54,7 @@
                     $('[name="namaProduk"]').each(function(i,e){   
                         $(this).autocomplete({
                             source: function (request, response) {
-                                $.get("<?php echo base_url('Penjualan/get_autocomplete/?');?>", request,function(data){
+                                $.get("<?php echo base_url('Stokmasuk/get_autocomplete/?');?>", request,function(data){
                                     jsonData = JSON.parse(data);
                                     console.log(jsonData);
                                     response($.map(jsonData, function (value, key) {

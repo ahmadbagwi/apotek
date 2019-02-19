@@ -36,11 +36,11 @@ Class Penjualan extends CI_Controller {
 	}
 
 	function prosesTransaksi() {
-		$awal = 'trx_';
-        $akhir = date('YmdHis');
+		//$awal = 'trx_';
+        //$akhir = date('mdis');
         
 		$count = $this->input->post('count');
-		$kodeTransaksi = $awal.$akhir;
+		$kodeTransaksi = date('mdis');
 		$tanggal = date('Y-m-d H:i:s');
 		$jenis = $this->input->post('jenis');
 		$idUser = $this->input->post('idUser');
@@ -49,6 +49,7 @@ Class Penjualan extends CI_Controller {
 		$hargaModal = $this->input->post('hargaModal');
 		$jual = $this->input->post('jual');
 		$jumlah = $this->input->post('jumlah');
+		$totalModal = $this->input->post('totalModal');
 		$total = $this->input->post('total');
 		$jumlahModal = $this->input->post('grandTotalModal');
 		$jumlahJual = $this->input->post('grand-total');
@@ -70,7 +71,8 @@ Class Penjualan extends CI_Controller {
 				'idProduk' => $idProduk[$index],
 				'modal' => $hargaModal[$index],
 				'jual' => $jual[$index],
-				'jumlah' => $jumlah[$index], 
+				'jumlah' => $jumlah[$index],
+				'totalModal' => $totalModal[$index], 
 				'total' => $total[$index] 
 			));
 			array_push($ambilStok, array(

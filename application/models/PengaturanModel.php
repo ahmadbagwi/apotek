@@ -17,7 +17,34 @@ class PengaturanModel extends CI_Model {
         $result= $this->db->insert('pengaturan',$data);
         return $result;
     }
+/*
+    function nama() {
+    	$this->db->select('nama');
+    	$this->db->from('pengaturan');
+    	$this->db_order_by('desc');
+    	$query = $this->db->get();
+    	$row = $query->row();
+    	return $row->nama;
+    }
 
+    function alamat() {
+    	$this->db->select('alamat');
+    	$this->db->from('pengaturan');
+    	$this->db_order_by('desc');
+    	$query = $this->db->get();
+    	$row = $query->row();
+    	return $row->alamat;
+    }
+
+        function phone() {
+    	$this->db->select('phone');
+    	$this->db->from('pengaturan');
+    	$this->db_order_by('desc');
+    	$query = $this->db->get();
+    	$row = $query->row();
+    	return $row->phone;
+    }
+*/
 	function namaAplikasi() {
 		$this->db->select('nama');
 		$this->db->from('pengaturan');

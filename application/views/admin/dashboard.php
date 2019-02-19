@@ -58,7 +58,7 @@
 	                  <div class="card-body-icon">
 	                    <i class="fas fa-fw fa-list"></i>
 	                  </div>
-	                  <div class="mr-5"><?php foreach ($profitBulanan as $profitBulanan) { echo "Rp ".$profitBulanan['profit']; break; } ?>  Bulan ini</div>
+	                  <div class="mr-5"><?php $jumlahJual; ?>  Omset bulan ini</div>
 	                </div>
 	                <a class="card-footer text-white clearfix small z-1" href="#">
 	                  <span class="float-right">

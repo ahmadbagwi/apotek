@@ -5,7 +5,7 @@
 					<?php form_close();?>
                     <br><legend>Riwayat Transaksi Tanggal <?php echo $tanggal;?></legend>
                        
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                     	<tr>
                     		<td>Kode Transaksi</td>
                     		<td>Tanggal</td>

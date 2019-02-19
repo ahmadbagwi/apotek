@@ -38,14 +38,15 @@ Class Nota extends CI_Controller {
 		$data['title'] = "Cetak Nota";
         $data['penjualan'] = $this->NotaModel->transaksiTerakhir($kode);
 		$data['pembayaran'] = $this->NotaModel->pembayaranTerakhir($kode);
-		$panjang = 150;
+		$panjang = 210;
 		$html = $this->load->view('admin/notacetak', $data, true);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8',
-									'format' => [75, $panjang],
+									'format' => [120, $panjang],
+									'default_font' => 'dejavusans-bold',
 									'orientation' => 'P',
 									'margin_left' => '5',
-									'margin_right' => '5',
-									'margin_top' => '5',
+									'margin_right' => '3',
+									'margin_top' => '2',
 									'margin_bottom' => '0',
 									'autoPageBreak' => 'false']);
 		$mpdf->WriteHTML($html);

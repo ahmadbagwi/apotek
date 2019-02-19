@@ -15,6 +15,13 @@ class StokmasukModel extends CI_Model
         parent::__construct();
     }
 
+    public function cariProduk($nama){
+        $this->db->like('nama', $nama , 'both');
+        $this->db->order_by('nama', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('stok')->result();
+    }
+
     // get all
     function get_all()
     {

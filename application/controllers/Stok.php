@@ -196,7 +196,7 @@ class Stok extends CI_Controller
 	$this->form_validation->set_rules('modal', 'modal', 'trim|required');
 	$this->form_validation->set_rules('jual', 'jual', 'trim|required');
 	$this->form_validation->set_rules('dibuat', 'dibuat', 'trim|required');
-    $this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
+    //$this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
 
 	$this->form_validation->set_rules('id', 'id', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

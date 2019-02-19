@@ -10,6 +10,9 @@ Class Pengaturan extends CI_Controller {
     }
 
 	function index() {
+		$data['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
+		$data['alamat'] = $this->PengaturanModel->alamat();
+		$data['phone'] = $this->PengaturanModel->kontak();
 		$data['title'] = "Pengaturan Aplikasi";
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/sidebar');

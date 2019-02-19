@@ -2,15 +2,15 @@
                             <form id="submit">
                         	    <div class="form-group">
                                     <label for="varchar">Nama Aplikasi</label>
-                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" />
+                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?php echo $namaAplikasi;?>" />
                                 </div>
                         	    <div class="form-group">
                                     <label for="varchar">Alamat</label>
-                                    <textarea name="alamat" id="alamat" class="form-control"></textarea>
+                                    <input type ="text" name="alamat" id="alamat" class="form-control" value="<?php echo $alamat;?>">
                                 </div>
                         	    <div class="form-group">
                                     <label for="varchar">Telp/Hp</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" />
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" value="<?php echo $phone;?>"/>
                                 </div>
                         	    <div class="form-group">
                                     <label for="int">Logo</label>

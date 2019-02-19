@@ -24,6 +24,13 @@ Class Laporan extends CI_Controller {
 
 	public function labaHarian() {
 		$tanggal = $this->input->get('tanggalCari');
+		if ($tanggal==null) {
+			$tanggal = date('Y-m-d');
+		}
+		$shift = $this->input->get('shift');
+		if ($shift==null) {
+			$shift = 1;
+		}
 		$shift = $this->input->get('shift');
 		if ($shift == 1) { $jam1 = "07:30:00"; $jam2 = "15:00:59"; } else { $jam1 = "15:01:00"; $jam2 = "22:10:00"; }
 		$data['tanggal'] = $tanggal;

@@ -38,8 +38,20 @@ Class PembatalantransaksiModel extends CI_Model {
 		$this->db->update('pembayaran', array('status' => 'batal'));
 	}
 
-	function kurangiProfit($kode, $nilai) {
+	function kurangiModal($kode, $modal) {
+		$this->db->set('jumlahModal', 'jumlahModal-' . (int) $modal, FALSE);
+		$this->db->where('kode', $kode);
+		$this->db->update('pembayaran');
+	}
+
+	function kurangiJual($kode, $nilai) {
 		$this->db->set('jumlahJual', 'jumlahJual-' . (int) $nilai, FALSE);
+		$this->db->where('kode', $kode);
+		$this->db->update('pembayaran');
+	}
+
+	function kurangiProfit($kode, $profitAkhir) {
+		$this->db->set('profit', 'profit-' .(int)$profitAkhir, FALSE);
 		$this->db->where('kode', $kode);
 		$this->db->update('pembayaran');
 	}

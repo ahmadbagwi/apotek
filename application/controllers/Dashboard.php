@@ -20,7 +20,8 @@ Class Dashboard extends CI_Controller {
 		$data['namaAplikasi'] = $this->PengaturanModel->namaAplikasi();
 		$data['jumlahProduk'] = $this->DashboardModel->jumlahProduk();
 		$data['jumlahTransaksi'] = $this->DashboardModel->jumlahTransaksi();
-		$data['profitBulanan'] = $this->LaporanModel->laba_bulanan($tanggal, $jam1, $jam2);
+		$tanggal = substr($tanggal, 0,7);
+		$data['jumlahJual'] = $this->LaporanModel->jualBulanan($tanggal);
 		$data['title'] = "Dashboard";
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/sidebar');

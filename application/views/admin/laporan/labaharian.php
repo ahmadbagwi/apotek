@@ -10,7 +10,7 @@
                             Menampilkan data <?php echo $tanggal; if ($jam1 == "07:30:00") echo " (Shift 1)"; else { echo " (Shift 2)"; } ?><br>
                             <?php //echo $jam1." ".$jam2;?>
                             <h3>Transaksi Sukses</h3>
-                            <table class="table table-striped" border="0" cellpadding="0" style="font-size: 12px">
+                            <table class="table table-striped table-responsive" border="0" cellpadding="0" style="font-size: 12px">
                                      <tr>
                                          <th>Kasir</th>
                                          <th>Kode</th>

@@ -12,6 +12,24 @@ class Stokmasuk extends CI_Controller
         $this->load->library('form_validation');
     }
 
+    function get_autocomplete(){
+        if (isset($_GET['term'])) {
+            $query = $this->StokmasukModel->cariProduk($_GET['term']);
+            if (count($query) > 0) {
+            foreach ($query as $row)
+                $result[] = array(
+                    'name' => $row->nama,
+                    'idProduk' => $row->id,
+                    'modal' => $row->modal,
+                    'jual' => $row->jual,
+                    'stokProduk' => $row->stok,
+                );
+                $json = json_encode($result);
+                echo $json;
+            }
+        }
+    }
+
     public function index()
     {
         $q = urldecode($this->input->get('q', TRUE));

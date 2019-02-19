@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<input type="text" name="tanggalCari" class="date datepicker" placeholder="Cari tanggal" value="<?php echo date('Y-m-d');?>">
 		<input type="submit" name="cari" value="Cari"><br>
 		<?php form_close();?>
-		<table class="table table-striped">
+		<table class="table table-striped table-responsive">
 			<tr>
 				<td>No</td>
 				<td>Tanggal</td>

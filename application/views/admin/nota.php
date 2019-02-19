@@ -7,14 +7,14 @@
                     		<div class="row jumbotron" style="font-size: 12px">
                                 <div class="col-md-12">
                                     <div id="nota">
-                    					<h5><?php echo $namaAplikasi; ?></h5>
-                                        <?php echo $alamat.' '.$kontak;?><br>
-                                   
-                                    Kasir <?php echo $_SESSION['username'];?><br>
-                                    Kode Transaksi <?php echo $trx; ?><br>
-                                    <?php foreach ($penjualan as $tanggal) { ?>
-                                    Tanggal <?php echo $tanggal['tanggal']; break;}?><br>
-                                   
+                    					<?php echo "<strong>".$namaAplikasi."</strong><br>"; ?>
+                                        <?php echo "<strong>".$alamat."</strong><br>";?>
+                                        <?php echo "<strong>".$kontak."</strong><br>";?>
+                                        ====================<br>
+                                        <?php echo "<strong>Kasir ".$_SESSION['username']."</strong>";?><br>
+                                        ====================<br>
+                                        <?php foreach ($penjualan as $tanggal) { echo "<strong>".$tanggal['tanggal']." ".$trx."<br></strong>"; break;}?>
+                                        ====================<br>
                                     <table class="table table-striped" style="font-size: 12px">
                                          <tr>
                                          <th>Produk</th>
@@ -52,7 +52,8 @@
                                                  <td><strong><?php echo number_format($pembayaran['kembali']); }?></strong></td>
                                              </tr>
                                          </table>
-                                      
+                                        ====================<br>
+                                        <span>Terima kasih atas kunjungan anda</span>
                                     </div>
                                 </div>                              
                     	    </div><!--row jumbotron-->

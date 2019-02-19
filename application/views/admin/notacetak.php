@@ -1,27 +1,27 @@
              <div class="col-md-4 col-sm-4">
                 <div id="nota" style="font-size: 12px">
-                    <h5><?php echo $namaAplikasi; ?></h5>
-                    <?php echo $alamat.' '.$kontak;?><br>
+                    <?php echo "<strong>".$namaAplikasi."</strong><br>"; ?>
+                    <?php echo "<strong>".$alamat."</strong><br>";?>
+                    <?php echo "<strong>".$kontak."</strong><br>";?>
                     ====================<br>
-                    Kasir <?php echo $_SESSION['username'];?><br>
-                    Kode Transaksi <?php echo $trx; ?><br>
-                    <?php foreach ($penjualan as $tanggal) { echo "Tanggal ".$tanggal['tanggal']."<br>"; break;}?>
+                    <?php echo "<strong>Kasir ".$_SESSION['username']."</strong>";?><br>
                     ====================<br>
-                    <table class="table table-striped" border="1|0" cellpadding="5" style="font-size:10px">
+                    <?php foreach ($penjualan as $tanggal) { echo "<strong>".$tanggal['tanggal']." ".$trx."<br></strong>"; break;}?>
+                    ====================<br>
+                    <table class="table table-striped" border="1|0" cellpadding="5" style="font-size:10px; font-weight: 10px">
                          <tr>
                          <th>Produk</th>
                          <th>Harga</th>
                          <th>Jumlah</th>
-
-                         <th>Total</th>
+                         <th>Sub</th>
                          </tr>
                             <?php foreach ($penjualan as $penjualan) {?>
                              <tr>
-                                 <td><?php echo $penjualan['nama'];?></td>
-                                 <td><?php echo number_format($penjualan['jual']);?></td>
-                                 <td><?php echo $penjualan['jumlah'];?></td>
+                                 <td><strong><?php echo $penjualan['nama'];?></strong></td>
+                                 <td><strong><?php echo number_format($penjualan['jual']);?></strong></td>
+                                 <td><strong><?php echo $penjualan['jumlah'];?></strong></td>
                 
-                                 <td><?php echo number_format($penjualan['total']);?></td>
+                                 <td><strong><?php echo number_format($penjualan['total']);?></strong></td>
                              </tr>
                          <?php } ?>
                          <?php foreach ($pembayaran as $pembayaran) {?> 
@@ -45,6 +45,7 @@
                              </tr>
                          </table>
                          ====================<br>
+                         <span>Terima kasih atas kunjungan anda</span>
                  </div>                              
              </div>
 

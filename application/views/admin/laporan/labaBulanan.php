@@ -14,7 +14,7 @@
 						echo $this->table->generate($query);
 						*/?>   
 
-                        <table class="table table-striped" border="0" cellpadding="0" style="font-size: 12px">
+                        <table class="table table-striped table-responsive" border="0" cellpadding="0" style="font-size: 12px">
                            <tr>
                                 <th>Tanggal</th>
                                 <th>Jumlah Modal</th>
