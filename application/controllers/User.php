@@ -26,8 +26,16 @@ class User extends CI_Controller {
 	
 	public function index() {
 		
-
 		$this->load->view('landing');
+	}
+
+	public function list() {
+		$data['daftarAkun'] = $this->user_model->list();
+		$data['title'] = "Daftar Akun";
+		$this->load->view('admin/header', $data);
+		$this->load->view('admin/sidebar');
+		$this->load->view('user/list');
+		$this->load->view('admin/footer');
 	}
 	
 	/**
@@ -60,9 +68,10 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() === false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
+			$this->load->view('admin/header');
+			$this->load->view('admin/sidebar');
 			$this->load->view('user/register/register', $data);
-			$this->load->view('footer');
+			$this->load->view('admin/footer');
 			
 		} else {
 			
@@ -73,24 +82,36 @@ class User extends CI_Controller {
 			$full_name  = $this->input->post('full_name');
 			$phone      = $this->input->post('phone');
 			$address    = $this->input->post('address');
-			
-			if ($this->user_model->create_user($username, $email, $password, $full_name, $phone, $address)) {
-				
+			$foto_name = date('Y-m-d').$username;
+
+			$config['file_name'] = $foto_name;
+			$config['upload_path'] = './assets/images/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']     = '512';
+			$config['max_width'] = '1024';
+			$config['max_height'] = '768';
+			$this->load->library('upload', $config);
+			//$this->upload->register('foto');
+
+			if ($this->user_model->create_user($username, $email, $password, $full_name, $phone, $address, $foto)) {
+
 				// user creation ok
-				$this->load->view('header');
+				$this->load->view('admin/header');
+				$this->load->view('admin/sidebar');
 				$this->load->view('user/register/register_success', $data);
-				$this->load->view('footer');
+				$this->load->view('admin/footer');
 				
 			} else {
 				
 				// user creation failed, this should never happen
-				$data->error = 'There was a problem creating your new account. Please try again.';
+				$data->error = 'Terjadi kesalahan saat pembuatan akun, silahkan coba lagi.';
 				
 				// send error to the view
-				$this->load->view('header');
+				$this->load->view('admin/header');
+				$this->load->view('admin/sidebar');
 				$this->load->view('user/register/register', $data);
-				$this->load->view('footer');
-				
+				$this->load->view('admin/footer');
+					
 			}
 			
 		}
@@ -142,9 +163,8 @@ class User extends CI_Controller {
 				$_SESSION['is_admin']     = (bool)$user->is_admin;
 				
 				// user login ok
-				//this->load->view('beranda'	, $data);
-				//$this->load->view('user/login/login_success', $data);
-				//$this->load->view('footer');
+				$id = $_SESSION['user_id']; 
+				$this->user_model->checkin($id);
 				$this->load->view('admin/header', $data);
 				$this->load->view('admin/sidebar');
 				$this->load->view('admin/dashboard');

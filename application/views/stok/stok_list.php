@@ -1,5 +1,16 @@
-                    <legend>Daftar Produk | Apotek Budi Farma</legend>
-                        <div class="col-md-12 text-right">
+                    <legend>Daftar Produk</legend>
+                    <div class="row" style="margin-bottom: 10px">
+                            <div class="col-md-4">
+                                <?php echo anchor(site_url('stok/create'),'Baru', 'class="btn btn-primary"'); ?>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div style="margin-top: 8px" id="message">
+                                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+                                    </div>
+                            </div>
+                        <div class="col-md-1 text-right">
+                        </div>
+                        <div class="col-md-3 text-right">
                             <form action="<?php echo site_url('stok/index'); ?>" class="form-inline" method="get">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
@@ -17,7 +28,8 @@
                                 </div>
                             </form>
                         </div>
-                        <table style="width: 100%" class="table">
+                    </div>
+                        <table style="width: 100%;font-size:12px;" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -60,16 +72,6 @@
                                 }
                                 ?>
                         </table>
-                            <div class="row" style="margin-bottom: 10px">
-                                <div class="col-md-4">
-                                    <?php echo anchor(site_url('stok/create'),'Baru', 'class="btn btn-primary"'); ?>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <div style="margin-top: 8px" id="message">
-                                        <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-                                    </div>
-                                </div>
-                            </div>
                                 
                             <div class="row">
                                 <div class="col-md-6">

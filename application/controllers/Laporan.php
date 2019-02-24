@@ -42,14 +42,16 @@ Class Laporan extends CI_Controller {
 
 	function labaBulanan() {
 		if ($this->input->get('tanggalCari')==null) {
-			$tanggal = date('Y-m-d');
+			$tanggal = date('Y-m');
 		} else {
 			$tanggal = $this->input->get('tanggalCari');
+			$tanggal = substr($tanggal, 0,7);
 		}
-		$tanggal = substr($tanggal, 0,7);
-		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
-		$data['tanggal'] = substr($tanggal, 0,8);
+		
+		//$data['tanggal'] = substr($tanggal, 0,8);
+		$data['bulan'] = $tanggal;
 		$data['title'] = "Laporan Transaksi Bulanan";
+		$data['query'] = $this->LaporanModel->laba_bulanan($tanggal);
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/sidebar');
 		$this->load->view('admin/laporan/labaBulanan', $data);

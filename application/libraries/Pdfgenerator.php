@@ -1,9 +1,9 @@
 <?php
-class Pdfgenerator {
+Class Pdfgenerator {
   public function generate($html,$filename)
   {
     define('DOMPDF_ENABLE_AUTOLOAD', false);
-    require_once("./vendor/dompdf/dompdf/dompdf_config.inc.php");
+    require_once("./third_party/dompdf/dompdf/dompdf_config.inc.php");
  
     $dompdf = new DOMPDF();
     $dompdf->load_html($html);

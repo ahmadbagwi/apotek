@@ -1,20 +1,18 @@
-						<legend>Laba transaksi bulanan</h3><legend>	
-						<?php echo form_open('Laporan/labaBulanan', array('method'=>'get'));?>
-						<input type="text" name="tanggalCari" class="date datepicker">
+					<div class="konten">	
+                        <?php echo form_open('Laporan/labaBulanan', array('method'=>'get'));?>
+						<input type="text" name="tanggalCari" class="date datepicker" placeholder="Cari Bulan">
 						<input type="submit" name="cari" value="Cari">
+                        <br><legend>Daftar Transaksi Bulanan <?php echo $bulan;?></legend>
 						<?php form_close(); ?>						
                         <?php
-                        echo "<p>Bulan "."<strong>".$tanggal."<strong>";
 						$this->table->set_heading('Modal', 'Jual', 'Profit');
 						$template = array (
-									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%" class="table table-bordered">',
+									'table_open' => '<table border="1" cellpadding="2" cellspacing="2" style="width: 100%;font-size:12px;" class="table table-bordered">',
 									);
 						$this->table->set_template($template);
 						//$this->table->add_row($totalLabaHarian);
-						echo $this->table->generate($query)."<br>"; var_dump($query);
-						?>
-					   
-                    </fieldset><!--fieldset-->      
+						echo $this->table->generate($query);
+						?>    
                 </div><!--div-col-12-->
            
                 <script>

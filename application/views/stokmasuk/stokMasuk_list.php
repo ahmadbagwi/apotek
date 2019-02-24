@@ -1,7 +1,7 @@
-                    <h2 style="margin-top:0px">Daftar Transaksi Stok Masuk</h2>
+                    <legend>Daftar Transaksi Stok Masuk<legend>
                     <div class="row" style="margin-bottom: 10px">
                         <div class="col-md-4">
-                            <?php echo anchor(site_url('stokmasuk/create'),'Create', 'class="btn btn-primary"'); ?>
+                            <?php echo anchor(site_url('stokmasuk/create'),'Baru', 'class="btn btn-primary"'); ?>
                         </div>
                         <div class="col-md-4 text-center">
                             <div style="margin-top: 8px" id="message">
@@ -29,17 +29,17 @@
                             </form>
                         </div>
                     </div>
-                    <table class="table table-bordered" style="margin-bottom: 10px">
+                    <table class="table table-striped" style="margin-bottom: 10px;font-size:12px;">
                         <tr>
                             <th>No</th>
-            		<th>IdUser</th>
-            		<th>IdSuplier</th>
-            		<th>NamaProduk</th>
-            		<th>IdProduk</th>
+            		<th>Id User</th>
+            		<th>Id Suplier</th>
+            		<th>Nama Produk</th>
+            		<th>Id Produk</th>
             		<th>Tanggal</th>
             		<th>Jumlah</th>
             		<th>Modal</th>
-            		<th>Action</th>
+            		<th>Aksi</th>
                         </tr><?php
                         foreach ($stokmasuk_data as $stokmasuk)
                         {

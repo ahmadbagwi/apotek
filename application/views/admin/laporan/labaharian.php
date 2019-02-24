@@ -1,11 +1,13 @@
     					<div class="konten">
                             <?php echo form_open('Laporan/labaHarian', array('method'=>'get'));?>
     						<input type="text" name="tanggalCari" class="date datepicker" placeholder="Cari tanggal">
-    						<input type="submit" name="cari" value="Cari">
+    						<input type="submit" name="cari" value="Cari"><br>
     						<?php form_close();?>
-                            <br><legend>Daftar Transaksi Tanggal <?php echo $tanggal;?></legend>
+                            Menampilkan data <?php echo $tanggal;?>
+                            <legend>Transaksi Sukses</legend>
                             <table class="table table-striped" style="font-size: 12px">
                                      <tr>
+                                         <th>Kasir</th>
                                          <th>Kode</th>
                                          <th>Transaksi Modal</td>
                                          <th>Transaksi Jual</th>
@@ -13,6 +15,7 @@
                                      </tr>
                                      <?php foreach ($labaHarian as $profitHarian) { ?>
                                      <tr>
+                                         <td><?php echo $profitHarian['username']; ?></td>
                                          <td><?php echo $profitHarian['kode']; ?></td>
                                          <td><?php echo $profitHarian['jumlahModal'];?></td>
                                          <td><?php echo $profitHarian['jumlahJual'];?></td>
@@ -22,14 +25,15 @@
                                      <tr>
                                          <td></td>
                                          <td></td>
+                                         <td></td>
                                          <td><strong>Total Profit</strong></td>
                                          <td><strong><?php echo $totalLabaHarian;?></strong></td>
                                      </tr>
                             </table>
 
                             <?php
-                            echo "<br><legend>Daftar Pembatalan Transaksi</legend>";
-                            $this->table->set_heading('Id Pembatalan', 'Id User', 'Tanggal', 'No. Transaksi', 'Id Produk', 'Nilai Transaksi', 'Jumlah Barang');
+                            echo "<br><legend>Transaksi Dibatalkan</legend>";
+                            $this->table->set_heading('Kasir', 'Kode', 'Produk', 'Jumlah', 'Nilai');
                             $template = array (
                                         'table_open' => '<table border="0" style="width: 100%;font-size:12px;" class="table table-striped">',
                                         );

@@ -133,7 +133,12 @@ class Stok extends CI_Controller
 		'jual' => set_value('jual', $row->jual),
 		'dibuat' => set_value('dibuat', $row->dibuat),
 	    );
+             $data['title'] = "Tambah Stok Masuk";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/sidebar');
             $this->load->view('stok/stok_form', $data);
+            $this->load->view('admin/footer');
+        
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('stok'));

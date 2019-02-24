@@ -13,12 +13,24 @@ Class NotaModel extends CI_Model {
 		$this->db->select('kode, tanggal, stok.nama, penjualan.jual, jumlah, total');
 		$this->db->where('kode', $kode);
 		$this->db->join('stok', 'stok.id = penjualan.idProduk');
-		return $penjualan = $this->db->get('penjualan');
+		$this->db->from('penjualan');
+		$query = $this->db->get();
+		return $row = $query->result_array();
+		//return $penjualan = $this->db->get('penjualan')->result_array();
 	}
 
+	function kasir($kode) {
+		$this->db->select('kode');
+		$this->db->from('pembayaran');
+		$query = $this->db->get();
+		return $query->row->kode;
+	}
+	
 	function pembayaranTerakhir($kode) {
 		$this->db->select('tanggal, kode, jumlahJual, bayar, kembali');
 		$this->db->where('kode', $kode);
-		return $pembayaran = $this->db->get('pembayaran');
+		$this->db->from('pembayaran');
+		$query = $this->db->get();
+		return $row = $query->result_array();
 	}
 }

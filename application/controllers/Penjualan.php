@@ -82,6 +82,7 @@ Class Penjualan extends CI_Controller {
 
 		$pembayaran = array(
 						'kode' => $kodeTransaksi,
+						'idUser' => $idUser,
 						'tanggal' => $tanggal,
 						'jumlahModal' => $jumlahModal,
 						'jumlahJual' => $jumlahJual,

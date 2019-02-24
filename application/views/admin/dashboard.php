@@ -25,7 +25,6 @@
 	                  <div class="mr-5"><?php echo $jumlahProduk; ?> Produk</div>
 	                </div>
 	                <a class="card-footer text-white clearfix small z-1" href="#">
-	                  <span class="float-left">View Details</span>
 	                  <span class="float-right">
 	                    <i class="fas fa-angle-right"></i>
 	                  </span>
@@ -41,7 +40,6 @@
 	                  <div class="mr-5"><?php echo $jumlahTransaksi; ?> Transaksi Hari Ini</div>
 	                </div>
 	                <a class="card-footer text-white clearfix small z-1" href="#">
-	                  <span class="float-left">View Details</span>
 	                  <span class="float-right">
 	                    <i class="fas fa-angle-right"></i>
 	                  </span>
@@ -57,7 +55,6 @@
 	                  <div class="mr-5">15.000.000 Bulan Ini</div>
 	                </div>
 	                <a class="card-footer text-white clearfix small z-1" href="#">
-	                  <span class="float-left">View Details</span>
 	                  <span class="float-right">
 	                    <i class="fas fa-angle-right"></i>
 	                  </span>

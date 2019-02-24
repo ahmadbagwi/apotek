@@ -30,12 +30,12 @@
             <h6 class="dropdown-header">Stok:</h6>
             <a class="dropdown-item <?php if($title=='Daftar Produk'){echo 'active';}?>" href="<?php echo site_url('stok') ?>">Daftar Produk</a>
             <a class="dropdown-item <?php if($title=='Tambah Produk'){echo 'active';}?>" href="<?php echo site_url('stok/create') ?>">Tambah Produk</a>
-            <a class="dropdown-item <?php if($title=='Tambah Produk Masal'){echo 'active';}?>" href="#">Tambah Produk Masal</a>
+            <!--<a class="dropdown-item <?php// if($title=='Tambah Produk Masal'){echo 'active';}?>" href="#">Tambah Produk Masal</a>-->
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Stok Masuk:</h6>
             <a class="dropdown-item <?php if($title=='Daftar Transaksi Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk') ?>">Daftar Transaksi Stok Masuk</a>
             <a class="dropdown-item <?php if($title=='Tambah Stok Masuk'){echo 'active';}?>" href="<?php echo site_url('stokmasuk/create') ?>">Tambah Stok Masuk</a>
-            <a class="dropdown-item <?php if($title=='Tambah Stok Masuk Masal'){echo 'active';}?>" href="#">Tambah Stok Masuk Masal</a>
+            <!--<a class="dropdown-item <?php // if($title=='Tambah Stok Masuk Masal'){echo 'active';}?>" href="#">Tambah Stok Masuk Masal</a>-->
           </div>
         </li>
 
@@ -50,8 +50,23 @@
             <a class="dropdown-item <?php if($title=='Laporan Transaksi Bulanan'){echo 'active';}?>" href="<?php echo site_url('laporan/labaBulanan') ?>">Laporan Transaksi Bulanan</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Konsinyasi:</h6>
-            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#">Daftar Transaksi Konsinyasi</a>
-            <a class="dropdown-item <?php if($title=='Retur Produk'){echo 'active';}?>" href="#">Retur Produk</a>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Daftar Transaksi Konsinyasi</a>
+            <a class="dropdown-item <?php if($title=='Retur Produk'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Retur Produk</a>
+          </div>
+        </li>
+      
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Pengaturan</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Akun:</h6>
+            <a class="dropdown-item <?php if($title=='Daftar Akun'){echo 'active';}?>" href="<?php echo site_url('user/list') ?>">Daftar Akun</a>
+            <a class="dropdown-item <?php if($title=='Buat Akun'){echo 'active';}?>" href="<?php echo site_url('user/register') ?>">Buat Akun</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Aplikasi:</h6>
+            <a class="dropdown-item <?php if($title=='Daftar Transaksi Konsinyasi'){echo 'active';}?>" href="#" onClick="alert('belum tersedia')">Pengaturan Aplikasi</a>
           </div>
         </li>
       </ul>

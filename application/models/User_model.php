@@ -33,7 +33,7 @@ class User_model extends CI_Model {
 	 * @param mixed $address
 	 * @return bool true on success, false on failure
 	 */
-	public function create_user($username, $email, $password, $full_name, $phone, $address) {
+	public function create_user($username, $email, $password, $full_name, $phone, $address, $foto) {
 		
 		$data = array(
 			'username'   => $username,
@@ -43,11 +43,26 @@ class User_model extends CI_Model {
 			'full_name'  => $full_name,
 			'phone'      => $phone,
 			'address'    => $address,
+			'avatar'	 => $foto,
 
 		);
 		
 		return $this->db->insert('users', $data);
 		
+	}
+
+	public function list(){
+		$this->db->select('id, username, email, full_name, phone, last_login');
+		$this->db->from('users');
+		$query = $this->db->get();
+		return $row = $query->result_array();
+	}
+
+	public function checkin($id) {
+		$date = date('Y-m-d H:i:s');
+		$this->db->set('last_login', $date);
+		$this->db->where('id', $id);
+		return $this->db->update('users');
 	}
 	
 	/**

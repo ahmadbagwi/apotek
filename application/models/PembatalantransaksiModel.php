@@ -39,9 +39,12 @@ Class PembatalantransaksiModel extends CI_Model {
 
 	function daftarPembatalan($tanggal) {
 		//$date = date('Y-m');
+		$this->db->select('users.username, kode, stok.nama, jumlah, nilai');
 		$this->db->like('tanggal', $tanggal, 'after');
-		//$this->db->from('pembatalan');
-		return $this->db->get('pembatalan');
-		//return $row = $query->result_array();
+		$this->db->from('pembatalan');
+		$this->db->join('users', 'users.id = pembatalan.idUser');
+		$this->db->join('stok', 'stok.id = pembatalan.idProduk');
+		$query = $this->db->get();
+		return $row = $query->result_array();
 	}
 }
